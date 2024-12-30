@@ -1,4 +1,4 @@
-import { faChartPie, faHouse, faList, faMoon, faStopwatch, faSun, faTag } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChartPie, faGear, faHouse, faList, faMoon, faStopwatch, faSun, faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /*Navbar Icons*/
@@ -9,3 +9,5 @@ export const AnalyticsIcon = <FontAwesomeIcon icon={faChartPie}/>;
 export const PomodaroIcon = <FontAwesomeIcon icon={faStopwatch}/>;
 export const DarkThemeIcon = <FontAwesomeIcon icon={faMoon}/>;
 export const LightThemeIcon = <FontAwesomeIcon icon={faSun}/>;
+export const SettingsIcon = <FontAwesomeIcon icon={faGear}/>;
+export const ToggleButtonIcon = <FontAwesomeIcon icon={faBars}/>;

@@ -7,13 +7,20 @@ import Tasks from "./pages/Tasks";
 import Tags from "./pages/Tags";
 import Analytics from "./pages/Analytics";
 import Pomodaro from "./pages/Pomodaro";
+import Settings from "./pages/Settings";
+import useTheme from "./store/theme";
 
 function App() {
 
+  const {theme} = useTheme();
+
   useEffect(()=>{
-    const theme = localStorage.getItem("theme");
-    if(theme === "dark") document.documentElement.classList.add("dark");
-  }, [])
+    if(theme === "dark"){
+      document.documentElement.classList.add("dark");
+    }else{
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme])
 
   return (
     <BrowserRouter>
@@ -24,6 +31,7 @@ function App() {
           <Route path="tags" element={<Tags/>}/>
           <Route path="analytics" element={<Analytics/>}/>
           <Route path="pomodaro" element={<Pomodaro/>}/>
+          <Route path="settings" element={<Settings/>}/>
           <Route path="*" element={<h1>Page Not Found</h1>}/>
         </Route>
       </Routes>
