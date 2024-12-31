@@ -58,4 +58,10 @@
     .btn{
         @apply py-2 px-4 rounded-lg
     }
+    .bg-color{
+        @apply bg-secondary-bg-light dark:bg-secondary-bg-dark
+    }
+    .border-color{
+        @apply border dark:border-gray-700
+    }
 }

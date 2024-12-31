@@ -2,6 +2,7 @@ import { create } from "zustand";
 import pomodaroConfig from "../config/pomodaro";
 
 type State = {
+    running: boolean,
     duration: number,
     timer: null | any,
     sessionDuration: number,
@@ -15,6 +16,7 @@ type State = {
 }
 
 type Action = {
+    setRunning: (bool:boolean)=>void,
     setDuration: ()=>void;
     setTimer: (timer:any)=>void;
     setSessionDuration: (duration: number)=>void;
@@ -26,6 +28,7 @@ type Action = {
 }
 
 const usePomodaro = create<State & Action>((set)=>({
+    running: false,
     duration: pomodaroConfig.sessionDuration,
     timer: null,
     sessionDuration: pomodaroConfig.sessionDuration,
@@ -38,10 +41,11 @@ const usePomodaro = create<State & Action>((set)=>({
     syncWithTimeTracking: pomodaroConfig.syncWithTimeTracking,
 
 
+    setRunning: (bool)=>set(()=>({running: bool})),
     setTimer: (timer)=>set(()=>({timer})),
-    setDuration: ()=>set((state)=>{
+    setDuration: ()=>set((state)=>{        
         if(state.duration === 0){
-            if(state.sessionCount === state.sessionCompleted){
+            if(state.sessionCount === state.sessionCompleted+1 && state.sessionOrBreak === 'SESSION'){
                 state.resetPomodaro();
                 return {}
             }else{
@@ -50,7 +54,7 @@ const usePomodaro = create<State & Action>((set)=>({
                 :{ duration: state.sessionDuration, breakCompleted: state.breakCompleted+1, sessionOrBreak: 'SESSION' }
             }
         }else{
-            return { duration: state.duration - 1}
+            return { duration: state.duration - 1, running: true}
         }
     }),
     setSessionDuration: (duration)=>set(()=>({sessionDuration: duration})),
@@ -66,7 +70,9 @@ const usePomodaro = create<State & Action>((set)=>({
                 breakCompleted: 0,
                 sessionOrBreak: 'SESSION',
                 timer: null,
-                sessionDuration: pomodaroConfig.sessionDuration}
+                duration: state.sessionDuration,
+                running: false
+            }
         })
     }
     

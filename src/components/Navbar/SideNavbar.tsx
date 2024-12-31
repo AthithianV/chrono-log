@@ -1,13 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 
 import { navItems } from "../../utils/navItems";
-import { DarkThemeIcon, LightThemeIcon, SettingsIcon } from "../../assets/icons";
+import { SettingsIcon } from "../../assets/icons";
 import Brand from "./Brand";
-import useTheme from "../../store/theme";
 
 const SideNavbar = () => {
   
-  const {toggleTheme, theme} = useTheme();
   const {pathname} = useLocation();
 
   return (
@@ -39,16 +37,6 @@ const SideNavbar = () => {
           <span className="nav-item-title">Settings</span>
           </Link>
         </li>
-        
-        <li 
-          className="nav-item"
-          onClick={toggleTheme}>
-            <span className="nav-link">
-              {theme==='light'?LightThemeIcon:DarkThemeIcon}
-              <span className="nav-item-title">{theme!=='light'?'Dark':'Light'} Mode</span>
-            </span>
-        </li>
-      
       </ul>
     </nav>
   )
