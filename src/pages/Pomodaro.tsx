@@ -1,4 +1,4 @@
-import Sessions from "../components/Pomodaro/Sessions";
+import Sessions from "../components/Pomodaro/SessionsBar";
 import PomodaroSettings from "../components/Pomodaro/Settings";
 import Timer from "../components/Pomodaro/Timer";
 

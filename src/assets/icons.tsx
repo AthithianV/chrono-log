@@ -1,4 +1,4 @@
-import { faBars, faChartPie, faGear, faHouse, faList, faMoon, faPause, faPlay, faStop, faStopwatch, faSun, faTag } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChartPie, faChevronDown, faChevronUp, faGear, faHouse, faList, faMoon, faPause, faPlay, faStop, faStopwatch, faSun, faTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /*Navbar Icons*/
@@ -17,3 +17,5 @@ export const ToggleButtonIcon = <FontAwesomeIcon icon={faBars}/>;
 export const StartIcon = <FontAwesomeIcon icon={faPlay}/>;
 export const PauseIcon = <FontAwesomeIcon icon={faPause}/>;
 export const StopIcon = <FontAwesomeIcon icon={faStop}/>;
+export const UpArrowIcon = <FontAwesomeIcon icon={faChevronUp}/>;
+export const DownArrowIcon = <FontAwesomeIcon icon={faChevronDown}/>;

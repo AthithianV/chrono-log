@@ -1,7 +1,18 @@
+const conversion = 60*100;
+
 const pomodaroConfig = {
-    sessionDuration: 25*60*100, // Seconds * 100
+    conversion, // seconds * 100
+    sessionDuration: 25*conversion, 
     sessionCount: 4,
-    breakDuration: 5*60*100, // seconds *100
+    breakDuration: 5*conversion,
+
+    maxSessionDuration: 120*conversion, 
+    minSessionDuration: 5*conversion, 
+    maxBreakDuration: 30*conversion, 
+    minBreakDuration: 1*conversion, 
+    maxSessionCount: 10,
+    minSessionCount: 1,
+
     autoStart: true,
     syncWithTimeTracking: true
 }

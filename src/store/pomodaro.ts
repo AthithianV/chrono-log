@@ -57,9 +57,30 @@ const usePomodaro = create<State & Action>((set)=>({
             return { duration: state.duration - 1, running: true}
         }
     }),
-    setSessionDuration: (duration)=>set(()=>({sessionDuration: duration})),
-    setSessionCount: (count)=>set(()=>({sessionCount: count})),
-    setBreakDuration: (duration)=>set(()=>({breakDuration: duration})),
+    setSessionDuration: (diff)=>set((state)=>{
+        if(!state.running && state.sessionDuration+diff <= pomodaroConfig.maxSessionDuration 
+            && state.sessionDuration+diff >= pomodaroConfig.minSessionDuration) {
+            return {sessionDuration: state.sessionDuration+diff, duration: state.sessionDuration+diff};
+        } else {
+            return {};
+        }
+    }),
+    setSessionCount: (diff)=>set((state)=>{
+        if(!state.running && state.sessionCount+diff <= pomodaroConfig.maxSessionCount 
+            && state.sessionCount+diff >= pomodaroConfig.minSessionCount) {
+            return {sessionCount: state.sessionCount+diff};
+        } else {
+            return {};
+        }
+    }),
+    setBreakDuration: (diff)=>set((state)=>{
+        if(!state.running && state.breakDuration+diff <= pomodaroConfig.maxBreakDuration 
+            && state.breakDuration+diff >= pomodaroConfig.minBreakDuration) {
+            return {breakDuration: state.breakDuration+diff};
+        } else {
+            return {};
+        }
+    }),
     setAutoStart: (bool)=>set(()=>({autoStart: bool})),
     setSyncWithTimeTracking: (bool) => set(()=>({syncWithTimeTracking: bool})),
     resetPomodaro: ()=>{

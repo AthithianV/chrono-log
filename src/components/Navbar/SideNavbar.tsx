@@ -10,7 +10,7 @@ const SideNavbar = () => {
 
   return (
     <nav 
-    className="flex flex-col justify-between h-full py-2 px-2 text-2xl w-fit bg-secondary-bg-light dark:bg-secondary-bg-dark shadow">
+    className="flex flex-col justify-between h-full py-2 px-2 text-xl w-fit bg-secondary-bg-light dark:bg-secondary-bg-dark shadow">
       <div>
 
         <Brand/>

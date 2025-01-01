@@ -1,52 +1,52 @@
-export type Environment = 'development' | 'production';
-export const APP_ENV: Environment = import.meta.env.VITE_APP_ENV === 'production' ? 'production' : 'development';
-export const LOG_LEVEL: LogLevel = APP_ENV === 'production' ? 'warn' : 'log';
+// export type Environment = 'development' | 'production';
+// export const APP_ENV: Environment = import.meta.env.VITE_APP_ENV === 'production' ? 'production' : 'development';
+// export const LOG_LEVEL: LogLevel = APP_ENV === 'production' ? 'warn' : 'log';
 
-/** Signature of a logging function */
-export interface LogFn {
-  (message?: any, ...optionalParams: any[]): void;
-}
+// /** Signature of a logging function */
+// export interface LogFn {
+//   (message?: any, ...optionalParams: any[]): void;
+// }
 
-/** Basic logger interface */
-export interface Logger {
-  log: LogFn;
-  warn: LogFn;
-  error: LogFn;
-}
+// /** Basic logger interface */
+// export interface Logger {
+//   log: LogFn;
+//   warn: LogFn;
+//   error: LogFn;
+// }
 
-/** Log levels */
-export type LogLevel = 'log' | 'warn' | 'error';
+// /** Log levels */
+// export type LogLevel = 'log' | 'warn' | 'error';
 
-const NO_OP: LogFn = (message?: any, ...optionalParams: any[]) => {};
+// const NO_OP: LogFn = (message?: any, ...optionalParams: any[]) => {};
 
-/** Logger which outputs to the browser console */
-export class ConsoleLogger implements Logger {
-  readonly log: LogFn;
-  readonly warn: LogFn;
-  readonly error: LogFn;
+// /** Logger which outputs to the browser console */
+// export class ConsoleLogger implements Logger {
+//   readonly log: LogFn;
+//   readonly warn: LogFn;
+//   readonly error: LogFn;
 
-  constructor(options?: { level? : LogLevel }) {
-    const { level } = options || {};
+//   constructor(options?: { level? : LogLevel }) {
+//     const { level } = options || {};
 
-    this.error = console.error.bind(console);
+//     this.error = console.error.bind(console);
 
-    if (level === 'error') {
-      this.warn = NO_OP;
-      this.log = NO_OP;
+//     if (level === 'error') {
+//       this.warn = NO_OP;
+//       this.log = NO_OP;
 
-      return;
-    }
+//       return;
+//     }
 
-    this.warn = console.warn.bind(console);
+//     this.warn = console.warn.bind(console);
 
-    if (level === 'warn') {
-      this.log = NO_OP;
+//     if (level === 'warn') {
+//       this.log = NO_OP;
 
-      return;
-    }
+//       return;
+//     }
 
-    this.log = console.log.bind(console);
-  }
-}
+//     this.log = console.log.bind(console);
+//   }
+// }
 
-export const logger = new ConsoleLogger({ level: LOG_LEVEL });
+// export const logger = new ConsoleLogger({ level: LOG_LEVEL });
