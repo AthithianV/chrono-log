@@ -6,7 +6,7 @@ const Settings = () => {
   const {toggleTheme, theme} = useTheme();
 
   return (
-    <div className="p-10">
+    <div className="p-10 slide-up">
         <div className="w-8/12 mx-auto">
           <h1 className="font-bold text-2xl py-2 border-b-2">Settings</h1>
           <div className="flex justify-between items-center my-1 font-semibold">

@@ -15,11 +15,11 @@ const Timer = () => {
     if(timer) return;
     setTimer(setInterval(()=>{
         setDuration();
-    }, 10));
+    }, 1000));
   }
 
   return (
-    <div className="p-10 w-fit rounded">
+    <div className="p-10 w-fit rounded mt-24">
         <ProgressBar/>
         <div className="flex-center gap-3 my-2 text-2xl text-white">
             {(!running)

@@ -1,7 +1,7 @@
 
 const Tasks = () => {
   return (
-    <div>Tasks</div>
+    <div className="slide-up">Tasks</div>
   )
 }
 

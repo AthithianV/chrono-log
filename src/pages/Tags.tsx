@@ -1,7 +1,7 @@
 
 const Tags = () => {
   return (
-    <div>Tags</div>
+    <div className="slide-up">Tags</div>
   )
 }
 

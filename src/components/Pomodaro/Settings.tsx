@@ -38,21 +38,29 @@ const PomodaroSettings = () => {
         <div className='absolute p-4 bg-color border-color bottom-[55px] right-1 rounded w-60 text-lg flex flex-col gap-2'>
           <SettingElement 
             title='Session Duration' 
-            placeholder={`${sessionDuration/pomodaroConfig.conversion} min`} 
+            value={sessionDuration/pomodaroConfig.conversion} 
             upFunction={()=>setSessionDuration(+pomodaroConfig.conversion)}
             downFunction={()=>setSessionDuration(-pomodaroConfig.conversion)}
+            min={5}
+            max={120}
+            suffix='min'
           />
           <SettingElement 
             title='Break Duration' 
-            placeholder={`${breakDuration/pomodaroConfig.conversion} min`} 
+            value={breakDuration/pomodaroConfig.conversion} 
             upFunction={()=> setBreakDuration(+pomodaroConfig.conversion)}
             downFunction={()=> setBreakDuration(-pomodaroConfig.conversion)}
+            min={1}
+            max={30}
+            suffix='min'
           />
           <SettingElement 
             title='Session Count' 
-            placeholder={`${sessionCount}`}
+            value={sessionCount}
             upFunction={()=> setSessionCount(+1)}
             downFunction={()=> setSessionCount(-1)}
+            min={1}
+            max={10}
           />
         </div>}
     </div>

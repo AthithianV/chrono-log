@@ -1,7 +1,7 @@
-const conversion = 60*100;
+const conversion = 60;
 
 const pomodaroConfig = {
-    conversion, // seconds * 100
+    conversion, // seconds
     sessionDuration: 25*conversion, 
     sessionCount: 4,
     breakDuration: 5*conversion,

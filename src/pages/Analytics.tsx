@@ -1,7 +1,7 @@
 
 const Analytics = () => {
   return (
-    <div>Analytics</div>
+    <div className="slide-up">Analytics</div>
   )
 }
 

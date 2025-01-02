@@ -12,7 +12,7 @@ const MainLayout = () => {
             </div>
             <OverlaySideNavbar/>
         </div>
-        <div className="flex-1 h-full">
+        <div className="flex-1 h-full overflow-hidden">
             <Outlet/>
         </div>
     </main>
