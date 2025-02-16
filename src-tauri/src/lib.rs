@@ -1,14 +1,40 @@
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
+use tauri_plugin_log::{Target, TargetKind, TimezoneStrategy};
+use tauri_plugin_sql::{Migration, MigrationKind};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    let migrations = vec![Migration {
+        version: 1,
+        description: "Create Task Table",
+        kind: MigrationKind::Up,
+        sql: "
+                    CREATE TABLE IF NOT EXISTS tasks (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        name TEXT NOT NULL,
+                        details TEXT,
+                        lump_sum INTEGER,
+                        hourly_rate INTEGER,
+                        color TEXT
+                    );
+                ",
+    }];
+
     tauri::Builder::default()
+        .plugin(
+            tauri_plugin_log::Builder::new()
+                .target(Target::new(TargetKind::LogDir {
+                    file_name: Some("logs".to_string()),
+                }))
+                .timezone_strategy(TimezoneStrategy::UseLocal)
+                .build(),
+        )
+        .plugin(tauri_plugin_sql::Builder::new().build())
+        .plugin(
+            tauri_plugin_sql::Builder::default()
+                .add_migrations("sqlite:app.db", migrations)
+                .build(),
+        )
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

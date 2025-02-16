@@ -5,7 +5,7 @@ import OverlaySideNavbar from '../Navbar/OverlaySideNavbar';
 const MainLayout = () => {
 
   return (
-    <main className="h-screen w-screen relative bg-primary-bg-light dark:bg-primary-bg-dark flex gap-2 dark:text-slate-300 max-sm:flex-col">
+    <main className="h-screen w-screen relative bg-gray-100 dark:bg-primary-bg-dark flex gap-2 dark:text-slate-300 max-sm:flex-col">
         <div className="bg-secondary-bg-light dark:bg-secondary-bg-dark block">
             <div className='h-full block max-sm:hidden'>
               <SideNavbar/>

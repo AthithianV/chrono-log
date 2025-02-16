@@ -49,7 +49,24 @@
   }
 }
 
+@keyframes moveToBottom {
+  from {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(50px);
+    opacity: 1;
+  }
+}
+
 .slide-up {
+  animation-name: moveToTop;
+  animation-duration: 0.2s;
+}
+
+.slide-down {
   animation-name: moveToTop;
   animation-duration: 0.2s;
 }
@@ -70,25 +87,42 @@ input[type="number"] {
   .flex-center {
     @apply flex justify-center items-center;
   }
+
   .flex-start {
     @apply flex justify-start items-center;
   }
+
   .nav-item {
-    @apply p-2 px-10 box-border dark:hover:bg-slate-500 hover:bg-slate-200 rounded-full cursor-pointer my-1;
+    @apply py-2 px-5 box-border dark:hover:bg-slate-500 hover:bg-slate-200 rounded cursor-pointer my-1;
   }
+
   .nav-item-title {
     @apply text-lg font-semibold;
   }
+
   .nav-link {
     @apply flex items-center gap-3;
   }
+
   .btn {
-    @apply py-2 px-4 rounded-lg;
+    @apply bg-primary px-5 py-2 rounded font-semibold text-white flex-center gap-2;
   }
+
   .bg-color {
     @apply bg-secondary-bg-light dark:bg-secondary-bg-dark;
   }
+
   .border-color {
     @apply border dark:border-gray-700;
   }
+
+  .input{
+    @apply flex-1 bg-white dark:bg-secondary-bg-dark focus:outline-none p-2 border-b-[1.5px] border-b-black dark:border-b-gray-400 focus:border-b-sky-500 border rounded
+  }
+
+  .input-container{
+    @apply flex flex-col gap-1 mb-5
+  }
+
+
 }

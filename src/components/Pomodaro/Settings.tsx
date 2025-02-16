@@ -28,14 +28,14 @@ const PomodaroSettings = () => {
     }, [])
 
   return (
-    <div className='absolute bottom-10 right-10' ref={settingsRef}>
+    <div className={`absolute bottom-10 right-10 dark:bg-secondary-bg-dark`} ref={settingsRef}>
         <button 
-            className='relative text-2xl py-2 px-3 rounded-md bg-color border dark:border-gray-700 cursor-pointer'
+            className='relative text-2xl py-2 px-3 rounded-md border dark:border-gray-700 cursor-pointer'
             onClick={()=>setShowSettings(prev=>!prev)}>
             {SettingsIcon}
         </button>
         {showSettings && 
-        <div className='absolute p-4 bg-color border-color bottom-[55px] right-1 rounded w-60 text-lg flex flex-col gap-2'>
+        <div className={`${showSettings?"slide-up":"slide-down"} absolute dark:bg-secondary-bg-dark p-4 border-color bottom-[55px] bg-white right-1 rounded w-60 text-lg flex flex-col gap-2`}>
           <SettingElement 
             title='Session Duration' 
             value={sessionDuration/pomodaroConfig.conversion} 

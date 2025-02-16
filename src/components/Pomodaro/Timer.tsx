@@ -23,8 +23,8 @@ const Timer = () => {
         <ProgressBar/>
         <div className="flex-center gap-3 my-2 text-2xl text-white">
             {(!running)
-            ?<button className="btn bg-green-500" onClick={start}>{StartIcon}</button>
-            :<button className="btn bg-red-500" onClick={stop}>{StopIcon}</button>
+            ?<button className="py-2 px-4 rounded bg-green-500" onClick={start}>{StartIcon}</button>
+            :<button className="py-2 px-4 rounded bg-red-500" onClick={stop}>{StopIcon}</button>
             }  
         </div>
 
