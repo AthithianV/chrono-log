@@ -1,4 +1,3 @@
-import { info } from "@tauri-apps/plugin-log";
 import { create } from "zustand";
 
 
@@ -26,8 +25,6 @@ const useTask = create<State & Action>((set)=>({
     updateTask: (task)=>set((state)=>{
         const index = state.tasks.findIndex(t=>t.id===task.id);
         state.tasks[index] = task;
-        info(JSON.stringify(index));
-        info(JSON.stringify(state.tasks[index]));
         return {tasks: state.tasks};
     }),
     addTask: (task)=>set((state)=>{

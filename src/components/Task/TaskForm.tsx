@@ -7,10 +7,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { TaskSchema } from '../../validation/taskSchema';
 import { z } from 'zod';
 import InputContainer from '../form/InputContainer';
+import { useState } from 'react';
 
 const TaskForm = () => {
 
     const { toggleCreateTaskView, addTask, task, updateTask } = useTask();
+    const [payForm, setPayForm] = useState("hourly_rate");
 
     const {register, handleSubmit, formState:{errors}} = useForm(
         {
@@ -78,21 +80,45 @@ const TaskForm = () => {
                 </InputContainer>
                     
 
-                <InputContainer title={'Hourly Rate'} error={errors.hourly_rate?.message}>
-                    <input 
-                        type='number' 
-                        className='input' 
-                        {...register("hourly_rate", {valueAsNumber: true})}    
-                        />
-                </InputContainer>
+                {
+                    payForm=="hourly_rate"
+                    ?<InputContainer title={'Hourly Rate'} error={errors.hourly_rate?.message}>
+                        <input 
+                            type='number' 
+                            className='input' 
+                            {...register("hourly_rate", {valueAsNumber: true})}    
+                            />
+                    </InputContainer>
+                    :<InputContainer title={'Lump Sum'} error={errors.hourly_rate?.message}>
+                        <input 
+                            type='number' 
+                            className='input' 
+                            {...register("lump_sum", {valueAsNumber: true})}    
+                            />
+                    </InputContainer>
 
-                <InputContainer title={'Lump Sum'} error={errors.hourly_rate?.message}>
-                    <input 
-                        type='number' 
-                        className='input' 
-                        {...register("lump_sum", {valueAsNumber: true})}    
-                        />
-                </InputContainer>
+                }
+
+                <div className='flex gap-10 mb-2'>
+                    <div className='flex-center gap-2'>
+                        <div 
+                            className='bg-white h-4 w-4 rounded-full flex-center'
+                            onClick={()=>setPayForm("hourly_rate")}>
+                            {payForm==="hourly_rate" && <span className='h-3 w-3 rounded-full bg-sky-400'></span>}
+                        </div>
+                        <label>Hourly Rate</label>
+                    </div>
+
+                    <div className='flex-center gap-2'>
+                        <div 
+                            className='bg-white h-4 w-4 rounded-full flex-center'
+                            onClick={()=>setPayForm("lump_sum")}>
+                            {payForm==="lump_sum" && <span className='h-3 w-3 rounded-full bg-sky-400'></span>}
+                        </div>
+                        <label htmlFor='lump_sum'>Lump Sum</label>
+                    </div>
+                </div>
+                
                     
                 <InputContainer title={'Color'} error={errors.color?.message}>
                      <input 
