@@ -3,21 +3,36 @@ use tauri_plugin_sql::{Migration, MigrationKind};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
-    let migrations = vec![Migration {
-        version: 1,
-        description: "Create Task Table",
-        kind: MigrationKind::Up,
-        sql: "
-                    CREATE TABLE IF NOT EXISTS tasks (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        name TEXT NOT NULL,
-                        details TEXT,
-                        lump_sum INTEGER,
-                        hourly_rate INTEGER,
-                        color TEXT
-                    );
-                ",
-    }];
+    let migrations = vec![
+        Migration {
+            version: 1,
+            description: "Create Task Table",
+            kind: MigrationKind::Up,
+            sql: "
+                        CREATE TABLE IF NOT EXISTS tasks (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            name TEXT NOT NULL,
+                            details TEXT,
+                            lump_sum INTEGER,
+                            hourly_rate INTEGER,
+                            color TEXT
+                        );
+                    ",
+        },
+        Migration {
+            version: 1,
+            description: "Create Tags Table",
+            kind: MigrationKind::Up,
+            sql: "
+                        CREATE TABLE IF NOT EXISTS tags (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            name TEXT NOT NULL,
+                            details TEXT,
+                            color TEXT
+                        );
+                    ",
+        },
+    ];
 
     tauri::Builder::default()
         .plugin(

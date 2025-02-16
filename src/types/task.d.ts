@@ -1,7 +1,8 @@
 type Task = {
+    id?: Number | null,
     name: string,
-    details: string,
-    hourlyRate: number,
-    lumpSum: number,
-    color: string
+    details: string | null,
+    hourly_rate: number | null,
+    lump_sum: number | null,
+    color: string | null
 }
