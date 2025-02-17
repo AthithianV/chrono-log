@@ -2,16 +2,16 @@ import { z } from "zod";
 
 export const TagSchema = z.object({
     name: z.string().min(4, "Name must contain 4 Characters"),
-    details: z.string().optional().nullable(),
-    color: z.string().optional().nullable()
+    details: z.string().nullable(),
+    color: z.string().nullable()
 });
 
 export const TaskSchema = z.object({
     name: z.string().min(4, "Name must contain 4 Characters"),
-    details: z.string().optional().nullable(),
-    hourly_rate: z.number().optional().nullable(),
-    lump_sum: z.number().optional().nullable(),
-    color: z.string().optional().nullable()
+    details: z.string().nullable(),
+    hourly_rate: z.number().nullable(),
+    lump_sum: z.number().nullable(),
+    color: z.string().nullable()
 });
 
 export const WorkUnitSchema = z.object({
