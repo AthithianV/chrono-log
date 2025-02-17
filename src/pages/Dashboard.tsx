@@ -9,8 +9,14 @@ const Dashboard = () => {
         <DashboardControls/>
       </div>
 
-      <div className="w-[300px] p-2">
-        <WorkUnitForm />
+      <div className="w-[300px] p-2 hide-on-small">
+          <WorkUnitForm />
+      </div>
+
+      <div className="hidden max-sm:block">
+        <div className="overlay">
+          <WorkUnitForm/>
+        </div>
       </div>
       
     </div>

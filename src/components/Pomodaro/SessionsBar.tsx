@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import usePomodaro from "../../store/pomodaro"
+import usePomodaro from "../../store/pomodaroStore"
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 const Sessions = () => {

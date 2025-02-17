@@ -1,5 +1,5 @@
 import { DarkThemeIcon, LightThemeIcon, ToggleButtonIcon } from "../../assets/icons"
-import useTheme from "../../store/theme"
+import useTheme from "../../store/themeStore"
 import Brand from "./Brand"
 
 type PropType={

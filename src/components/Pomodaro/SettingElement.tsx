@@ -1,5 +1,5 @@
 import { DownArrowIcon, UpArrowIcon } from "../../assets/icons"
-import usePomodaro from "../../store/pomodaro"
+import usePomodaro from "../../store/pomodaroStore"
 
 type PropsType = {
     title:string,

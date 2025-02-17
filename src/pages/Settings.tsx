@@ -1,5 +1,5 @@
 import { DarkThemeIcon, LightThemeIcon } from "../assets/icons";
-import useTheme from "../store/theme";
+import useTheme from "../store/themeStore";
 
 const Settings = () => {
 

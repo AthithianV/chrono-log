@@ -8,7 +8,7 @@ import Tags from "./pages/Tags";
 import Analytics from "./pages/Analytics";
 import Pomodaro from "./pages/Pomodaro";
 import Settings from "./pages/Settings";
-import useTheme from "./store/theme";
+import useTheme from "./store/themeStore";
 
 function App() {
 

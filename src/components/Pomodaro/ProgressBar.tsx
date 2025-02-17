@@ -2,7 +2,7 @@ import Circle from "../../assets/svg/Circle"
 import Text from "../../assets/svg/Text"
 import pomodaroConfig from "../../config/pomodaro";
 import theme from "../../config/theme";
-import usePomodaro from "../../store/pomodaro"
+import usePomodaro from "../../store/pomodaroStore"
 import { appendZero } from "../../utils/formatTime";
 
 const ProgressBar = () => {

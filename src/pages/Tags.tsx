@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { AddIcon, SortIcon } from "../assets/icons"
 import Database from "@tauri-apps/plugin-sql";
 import { error } from "@tauri-apps/plugin-log";
-import useTag from "../store/tags";
+import useTag from "../store/tagsStore";
 import TagForm from "../components/Tag/TagForm";
+import OverlayLayout from "../components/Layouts/OverlayLayout";
 
 const Tags = () => {
 
@@ -22,9 +23,9 @@ const Tags = () => {
   }, [sort]);
 
   return (
-    <div className="slide-up p-10">
+    <div className="slide-up p-10 max-sm:p-2">
       <div className="flex gap-2 pb-5">
-        {tagFormView && <TagForm/>}
+        {tagFormView && <OverlayLayout><TagForm/></OverlayLayout>}
         <button
           type="button"
           className="btn"
@@ -40,7 +41,7 @@ const Tags = () => {
 
         <button
           onClick={()=>toggleTagFormView()}
-          className="btn">
+          className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Tag
         </button>
@@ -52,7 +53,7 @@ const Tags = () => {
           tags.map((tag)=>(
             <li 
             onClick={()=>selectTag(tag)}
-            className="flex items-center font-semibold gap-2 p-2 px-5 my-2 text-lg cursor-pointer hover:bg-gray-200 hover:dark:bg-secondary-bg-dark rounded">
+            className="tag-task-item">
               <span 
                 style={{ backgroundColor: tag.color?tag.color:undefined }}
                 className={`border-[1px] border-black h-[20px] w-[20px] rounded-full`}></span>

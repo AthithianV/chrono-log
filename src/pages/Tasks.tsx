@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { AddIcon, SortIcon } from "../assets/icons"
-import useTask from "../store/Task"
+import useTask from "../store/taskStore"
 import Database from "@tauri-apps/plugin-sql";
 import { error } from "@tauri-apps/plugin-log";
 import TaskForm from "../components/Task/TaskForm";
+import OverlayLayout from "../components/Layouts/OverlayLayout";
 
 const Tasks = () => {
 
@@ -22,9 +23,9 @@ const Tasks = () => {
   }, [sort]);
 
   return (
-    <div className="slide-up p-10">
+    <div className="slide-up p-10 max-sm:p-2">
       <div className="flex gap-2 pb-5">
-        {createTaskview && <TaskForm/>}
+        {createTaskview && <OverlayLayout><TaskForm/></OverlayLayout>}
         <button
           type="button"
           className="btn"
@@ -40,7 +41,7 @@ const Tasks = () => {
 
         <button
           onClick={()=>toggleCreateTaskView()}
-          className="btn">
+          className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Task
         </button>
@@ -52,7 +53,7 @@ const Tasks = () => {
           tasks.map((task)=>(
             <li 
             onClick={()=>selectTask(task)}
-            className="flex items-center font-semibold gap-2 p-2 px-5 my-2 text-lg cursor-pointer hover:bg-gray-200 hover:dark:bg-secondary-bg-dark rounded">
+            className="tag-task-item">
               <span 
                 style={{ backgroundColor: task.color?task.color:undefined }}
                 className={`border-[1px] border-black h-[20px] w-[20px] rounded-full`}></span>

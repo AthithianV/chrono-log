@@ -6,14 +6,15 @@ import { z } from 'zod';
 import { useState } from 'react';
 
 import { CloseIcon } from '../../assets/icons'
-import useTask from '../../store/Task'
+import useTask from '../../store/taskStore'
 import InputContainer from '../form/InputContainer';
 import { TaskSchema } from '../../validation/schemas';
+import TaskOption from './TaskOption';
 
 const TaskForm = () => {
 
     const { toggleCreateTaskView, addTask, task, updateTask } = useTask();
-    const [payForm, setPayForm] = useState("hourly_rate");
+    const [payForm, setPayForm] = useState<"hourly_rate"|"lump_sum">("hourly_rate");
 
     const {register, handleSubmit, formState:{errors}} = useForm(
         {
@@ -52,8 +53,7 @@ const TaskForm = () => {
     }
 
   return (
-    <div className='h-screen w-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0 flex-center'>
-        <div className='bg-gray-100 dark:bg-primary-bg-dark rounded-lg p-10 slide-up min-w-[500px]'> 
+        <div className='overlay-form'> 
             
             <div className='flex justify-between text-xl font-semibold pb-8'>
                 <h1>Create New Task</h1>
@@ -100,25 +100,7 @@ const TaskForm = () => {
 
                 }
 
-                <div className='flex gap-10 mb-2'>
-                    <div className='flex-center gap-2'>
-                        <div 
-                            className='bg-white h-4 w-4 rounded-full flex-center'
-                            onClick={()=>setPayForm("hourly_rate")}>
-                            {payForm==="hourly_rate" && <span className='h-3 w-3 rounded-full bg-sky-400'></span>}
-                        </div>
-                        <label>Hourly Rate</label>
-                    </div>
-
-                    <div className='flex-center gap-2'>
-                        <div 
-                            className='bg-white h-4 w-4 rounded-full flex-center'
-                            onClick={()=>setPayForm("lump_sum")}>
-                            {payForm==="lump_sum" && <span className='h-3 w-3 rounded-full bg-sky-400'></span>}
-                        </div>
-                        <label htmlFor='lump_sum'>Lump Sum</label>
-                    </div>
-                </div>
+                <TaskOption payForm={payForm} setPayForm={setPayForm}/>
                 
                     
                 <InputContainer title={'Color'} error={errors.color?.message}>
@@ -136,7 +118,6 @@ const TaskForm = () => {
             </form>
 
         </div>
-    </div>
   )
 }
 

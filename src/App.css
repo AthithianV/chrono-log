@@ -124,4 +124,20 @@ input[type="number"] {
     @apply flex flex-col gap-1 my-5
   }
 
+  .overlay{
+    @apply h-full w-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0 flex justify-center items-center max-sm:items-end z-10 
+  }
+
+  .overlay-form{
+    @apply bg-gray-100 dark:bg-primary-bg-dark rounded-lg p-10 slide-up min-w-[500px] max-sm:min-w-[350px] max-sm:w-screen
+  }
+
+  .tag-task-item{
+    @apply flex items-center font-semibold gap-2 p-2 px-5 my-2 text-lg cursor-pointer hover:bg-gray-200 hover:dark:bg-secondary-bg-dark rounded
+  }
+
+  .hide-on-small{
+    @apply max-sm:hidden
+  }
+
 }

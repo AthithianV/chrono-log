@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import InputContainer from '../form/InputContainer';
-import useTag from '../../store/tags';
+import useTag from '../../store/tagsStore';
 import { TagSchema } from '../../validation/schemas';
 
 const TagForm = () => {
@@ -47,8 +47,7 @@ const TagForm = () => {
     }
 
   return (
-    <div className='h-screen w-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0 flex-center'>
-        <div className='bg-gray-100 dark:bg-primary-bg-dark rounded-lg p-10 slide-up min-w-[500px]'> 
+        <div className='overlay-form'> 
             
             <div className='flex justify-between text-xl font-semibold pb-8'>
                 <h1>Create New Tag</h1>
@@ -90,7 +89,6 @@ const TagForm = () => {
             </form>
 
         </div>
-    </div>
   )
 }
 

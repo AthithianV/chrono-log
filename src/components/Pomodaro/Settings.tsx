@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { SettingsIcon } from '../../assets/icons';
-import usePomodaro from '../../store/pomodaro';
+import usePomodaro from '../../store/pomodaroStore';
 import SettingElement from './SettingElement';
 import pomodaroConfig from '../../config/pomodaro';
 

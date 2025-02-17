@@ -25,13 +25,27 @@ const WorkUnitForm = () => {
   }
   
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <AddTagsButton/>
-        <div className="my-2 flex justify-end gap-2">
-            <Button name="Cancel" icon={CloseIcon}/>
-            <SubmitButton name={"Save"} icon={SaveIcon}/>
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
+
+        <div className="hide-on-small">
+            <AddTagsButton/>
+            <div className="my-2 flex justify-end gap-2">
+                <Button name="Cancel" icon={CloseIcon}/>
+                <SubmitButton name={"Save"} icon={SaveIcon}/>
+            </div>
         </div>
 
+        <div className="hidden max-sm:block">
+            <div className="flex items-center justify-start gap-4">
+                <button className="text-red-500 text-lg" type="button">{CloseIcon}</button>
+                <h1 className="font-semibold text-sm">Add Work Unit</h1>
+            </div>
+            <div className="flex items-center justify-end gap-4 text-lg">
+                <SubmitButton name={"Save"} icon={SaveIcon}/>
+                <AddTagsButton/>
+            </div>
+        </div>
+        
         <InputContainer title={"Description"} error={errors.description?.message}>
             <input className="input" type="text" {...register("description")}/>
         </InputContainer>   
