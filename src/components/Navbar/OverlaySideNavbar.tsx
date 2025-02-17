@@ -10,9 +10,7 @@ const OverlaySideNavbar = () => {
   const [isClose, setIsClose] = useState(false);
   const sideNavbarRef = useRef<null|HTMLDivElement>(null);
 
-  const handleClick = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {  
-    console.log(e);
-      
+  const handleClick = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {        
     if(
         (sideNavbarRef.current && !sideNavbarRef.current.contains(e.target as Node))
         || (e.target instanceof HTMLLIElement) || e.target instanceof HTMLSpanElement

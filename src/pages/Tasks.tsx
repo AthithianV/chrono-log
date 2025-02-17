@@ -27,7 +27,7 @@ const Tasks = () => {
         {createTaskview && <TaskForm/>}
         <button
           type="button"
-          className="px-5 flex-center gap-2 bg-primary-bg-light hover:bg-secondary-bg-light border rounded text-black font-semibold"
+          className="btn"
           onClick={()=>setSort((prev)=>prev=="ASC"?"DESC":"ASC")}
         >
           {SortIcon}

@@ -1,13 +1,14 @@
-import { CloseIcon } from '../../assets/icons'
-import useTask from '../../store/Task'
 import Database from '@tauri-apps/plugin-sql';
 import { error } from '@tauri-apps/plugin-log';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TaskSchema } from '../../validation/taskSchema';
 import { z } from 'zod';
-import InputContainer from '../form/InputContainer';
 import { useState } from 'react';
+
+import { CloseIcon } from '../../assets/icons'
+import useTask from '../../store/Task'
+import InputContainer from '../form/InputContainer';
+import { TaskSchema } from '../../validation/schemas';
 
 const TaskForm = () => {
 

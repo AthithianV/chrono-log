@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import InputContainer from '../form/InputContainer';
 import useTag from '../../store/tags';
-import { TagSchema } from '../../validation/tagSchema';
+import { TagSchema } from '../../validation/schemas';
 
 const TagForm = () => {
 

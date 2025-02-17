@@ -9,7 +9,7 @@ type PropType = {
 const InputContainer = ({title, children, error}:PropType) => {
   return (
     <div className='input-container'>
-        <label className='font-semibold'>{title}:</label>
+        <label className='font-semibold text-sm'>{title}:</label>
         {children}
         {error && <span className="text-red-500 text-sm">* {error}</span>}
     </div>
