@@ -20,6 +20,7 @@ export const WorkUnitSchema = z.object({
     date: z.string().transform(val=>new Date(val)),
     start_time: z.string().transform(val=>new Date(val)),
     end_time: z.string().transform(val=>new Date(val)),
+    task: z.number(),
     duration: z.custom<`${number}:${number}:${number}, number`>((val)=>{
         if(typeof val === "string"){
             const parts = val.split(":");

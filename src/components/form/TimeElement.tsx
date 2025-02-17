@@ -3,12 +3,13 @@ import { UseFormSetValue } from "react-hook-form";
 
 type PropType = {
     setValue: UseFormSetValue<{ 
-        start_time: Date;
-        end_time: Date;
-        date: Date;
-        description: string | null;
-        details: string | null;
-        duration: number;
+        start_time: Date,
+        end_time: Date,
+        date: Date,
+        description: string | null,
+        details: string | null,
+        duration: number,
+        task: number
     }>,
     name: "start_time" | "end_time",
     date: Date,
