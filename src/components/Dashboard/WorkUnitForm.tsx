@@ -34,8 +34,10 @@ const WorkUnitForm = () => {
             <textarea className="input h-[100px]" {...register("details")}></textarea>
         </InputContainer>    
         
-        <InputContainer title={"Date"} error={errors.description?.message}>
-            <input className="input" type="date" {...register("date")}/>
+        <InputContainer title={"Task"} error={errors.task?.message}>
+            <select className="input" {...register("task")}>
+                
+            </select>
         </InputContainer>
 
         <InputContainer title={"Date"} error={errors.description?.message}>
