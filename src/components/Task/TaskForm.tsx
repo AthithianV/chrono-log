@@ -39,11 +39,11 @@ const TaskForm = () => {
                 )
                 updateTask({...data, id:task.id} as Task);
             }else{
-                await db.execute(
+                const result = await db.execute(
                     "INSERT INTO tasks (name, details, hourly_rate, lump_sum, color) VALUES ($1, $2, $3, $4, $5)",
                     [data.name, data.details, data.hourly_rate, data.lump_sum, data.color]
                 );
-                addTask(data as Task);
+                addTask({...data, id: result.lastInsertId} as Task);
             }
             db.close();
             toggleCreateTaskView();          

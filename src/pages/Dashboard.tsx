@@ -7,7 +7,7 @@ const Dashboard = () => {
   const { workUnitFormView } = useWorkUnit();
 
   return (
-    <div className="slide-up p-2 flex">
+    <div className="slide-up p-4 flex">
 
       <div className="flex-1">
         <DashboardControls/>

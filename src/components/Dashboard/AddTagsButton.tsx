@@ -49,7 +49,7 @@ const AddTagsButton = () => {
         dropdown &&
         <ul 
           ref={addTagRef}
-          className="drop-down top-10 max-h-[500px]"
+          className="drop-down drop-down-animation top-10 max-h-[500px]"
         >
         {
           tags.map((tag,index)=>(

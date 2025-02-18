@@ -10,6 +10,8 @@
     "opener:default",
     "sql:default",
     "sql:allow-execute",
-    "log:default"
+    "log:default",
+    "core:window:default",
+    "core:window:allow-start-dragging"
   ]
 }

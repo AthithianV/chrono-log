@@ -42,7 +42,7 @@ input[type="number"] {
   }
 
   .btn {
-    @apply px-5 py-2 rounded font-semibold flex-center gap-2 border-[1px] border-transparent text-sm shadow bg-white hover:bg-primary;
+    @apply px-5 py-2 rounded font-semibold flex-center gap-2 border-[1px] border-transparent text-sm shadow bg-white dark:bg-secondary-bg-dark hover:bg-primary;
   }
 
   .bg-color {
@@ -70,7 +70,7 @@ input[type="number"] {
   }
 
   .tag-task-item{
-    @apply flex items-center font-semibold gap-2 p-2 px-5 my-2 text-lg cursor-pointer hover:bg-gray-200 hover:dark:bg-secondary-bg-dark rounded
+    @apply flex items-center font-semibold gap-2 p-2 px-5 my-2 text-sm cursor-pointer hover:bg-gray-200 hover:dark:bg-secondary-bg-dark rounded
   }
 
   .hide-on-small{

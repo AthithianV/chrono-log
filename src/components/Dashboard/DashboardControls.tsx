@@ -6,7 +6,7 @@ const DashboardControls = () => {
     const { toggleWorkUnitFormView } = useWorkUnit();
 
   return (
-    <div>
+    <div className=" border-b-2">
         <div className="my-2">
             <button 
                 className="btn bg-white" 

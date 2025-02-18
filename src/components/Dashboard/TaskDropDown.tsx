@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useTask from "../../store/taskStore"
 import { DownArrowIcon, UpArrowIcon } from "../../assets/icons";
 import { UseFormSetValue } from "react-hook-form";
@@ -20,6 +20,26 @@ const TaskDropDown = ({setValue}:PropType) => {
   const {tasks} = useTask();
   const [task, setTask] = useState<Task|null>(null);
   const [dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLUListElement|null>(null);
+
+  useEffect(()=>{
+  
+      const handleClick = (e:MouseEvent)=>{
+        if(
+          dropdownRef.current
+          && !dropdownRef.current.contains(e.target as Node)
+        ){
+          setDropdown(false);
+        }
+      } 
+  
+      document.addEventListener("mousedown", handleClick);
+  
+      return ()=>{
+        document.removeEventListener("mousedown", handleClick);
+      }
+  
+    }, []);
 
   const selectTask = (task:Task)=>{
     setTask(task);
@@ -37,7 +57,7 @@ const TaskDropDown = ({setValue}:PropType) => {
                 className="flex items-center gap-2"
               >
                 <span 
-                  className="h-3 w-3 rounded-full border-[1px] border-black"
+                  className="p-[5px] rounded-full border-[1px] border-black"
                   style={{backgroundColor: task.color?task.color:undefined}}></span>
                 <span>{task.name}</span>
               </div>
@@ -46,7 +66,7 @@ const TaskDropDown = ({setValue}:PropType) => {
           </div>
           {dropdown?UpArrowIcon:DownArrowIcon}
         </div>
-        {dropdown && <ul className="drop-down top-8 w-full max-h-[200px]">
+        {dropdown && <ul ref={dropdownRef} className="drop-down drop-down-animation top-8 w-full max-h-[200px]">
         {
           tasks.map((task,index)=>(
             <li 
@@ -56,7 +76,7 @@ const TaskDropDown = ({setValue}:PropType) => {
               onClick={()=>selectTask(task)}
             >
               <span 
-                className="h-3 w-3 rounded-full border-[1px] border-black"
+                className="p-[5px] rounded-full border-[1px] border-black"
                 style={{backgroundColor: task.color?task.color:undefined}}></span>
               <span>{task.name}</span>
             </li>

@@ -62,3 +62,18 @@
     animation-name: moveToTop;
     animation-duration: 0.2s;
 }
+
+@keyframes dropdown {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.drop-down-animation{
+    animation-name: dropdown;
+    animation-duration: 0.2s;
+}

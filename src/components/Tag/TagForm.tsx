@@ -1,6 +1,6 @@
 import { CloseIcon } from '../../assets/icons'
 import Database from '@tauri-apps/plugin-sql';
-import { error } from '@tauri-apps/plugin-log';
+import { error, info } from '@tauri-apps/plugin-log';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -33,11 +33,11 @@ const TagForm = () => {
                 )
                 updateTag({...data, id:tag.id} as Tag);
             }else{
-                await db.execute(
+                const result = await db.execute(
                     "INSERT INTO tags (name, details, color) VALUES ($1, $2, $3)",
                     [data.name, data.details, data.color]
                 );
-                addTag(data as Tag);
+                addTag({...data, id: result.lastInsertId} as Tag);
             }
             db.close();
             toggleTagFormView();          

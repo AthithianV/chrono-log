@@ -17,9 +17,12 @@
   "app": {
     "windows": [
       {
+        "fullscreen": false,
+        "height": 700,
+        "width": 1200,
         "title": "chrono-log",
-        "width": 800,
-        "height": 600
+        "resizable": true,
+        "decorations": false
       }
     ],
     "security": {

@@ -16,7 +16,7 @@ const TopNavbar = ({setOverlay}:PropType) => {
             <div onClick={()=>setOverlay(true)} className="py-1 px-2 rounded hover:shadow cursor-pointer">
                 {ToggleButtonIcon}
             </div>
-            <Brand/>
+            {/* <Brand/> */}
         </div>
         <div className="py-1 px-2 rounded hover:shadow cursor-pointer" onClick={toggleTheme}>
             {theme==="light"?DarkThemeIcon:LightThemeIcon}
