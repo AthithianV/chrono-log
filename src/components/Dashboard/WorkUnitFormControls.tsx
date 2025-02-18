@@ -22,15 +22,15 @@ const WorkUnitFormControls = () => {
 
         <div className="hidden max-sm:block">
 
-            <div className="flex items-center justify-start gap-4">
+            <div className="flex items-center justify-between gap-4">
+
+                <h1 className="font-semibold text-sm">Add Work Unit</h1>
 
                 <button 
                     className="text-red-500 text-lg"
                     type="button" 
                     onClick={()=>toggleWorkUnitFormView(false)}
                 >{CloseIcon}</button>
-
-                <h1 className="font-semibold text-sm">Add Work Unit</h1>
 
             </div>
 

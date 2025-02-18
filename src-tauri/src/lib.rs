@@ -20,7 +20,7 @@ pub fn run() {
                     ",
         },
         Migration {
-            version: 1,
+            version: 2,
             description: "Create Tags Table",
             kind: MigrationKind::Up,
             sql: "

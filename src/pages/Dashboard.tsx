@@ -13,7 +13,7 @@ const Dashboard = () => {
         <DashboardControls/>
       </div>
 
-      {workUnitFormView && <div className="w-[300px] p-2 hide-on-small">
+      {workUnitFormView && <div className="w-[350px] p-2 hide-on-small">
           <WorkUnitForm />
       </div>}
 
