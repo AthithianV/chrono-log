@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import "./App.css";
+import "./Animation.css";
 import MainLayout from "./components/Layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";

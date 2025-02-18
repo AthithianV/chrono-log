@@ -5,9 +5,12 @@ import InputContainer from "../form/InputContainer";
 import { z } from "zod";
 import WorkUnitFormControls from "./WorkUnitFormControls";
 import TimeElement from "../form/TimeElement";
+import useWorkUnit from "../../store/workUnitStore";
+import { TagIcon } from "../../assets/icons";
 
 const WorkUnitForm = () => {
   
+  const {selectedTags, removeTag} = useWorkUnit();
   const {register, getValues, setValue, handleSubmit, formState: {errors}} = useForm({
     resolver: zodResolver(WorkUnitSchema),
     defaultValues: {
@@ -64,6 +67,21 @@ const WorkUnitForm = () => {
             <input className="input" type="text" {...register("duration")} placeholder="hh:mm:ss"/>
         </InputContainer>
 
+        <div className="flex flex-wrap max-h-[100px] overflow-auto p-1">
+            {
+                selectedTags.map((tag, index)=>(
+                    <li 
+                      key={index}
+                      className="py-1 px-1 m-[0.5px] text-xs font-semibold rounded-sm flex-center gap-1 cursor-pointer hover-shadow"
+                      style={{backgroundColor: tag.color?tag.color:undefined}}
+                      onClick={()=>removeTag(tag.id)}
+                    >
+                        {TagIcon}
+                        <span>{tag.name}</span>
+                    </li>
+                ))
+            }
+        </div>
 
     </form>
   )

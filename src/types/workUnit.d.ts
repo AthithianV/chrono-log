@@ -1,5 +1,5 @@
 type WorkUnit = {
-    id?: number,
+    id: number,
     description: string|null,
     details: string|null,
     date: string,
@@ -7,4 +7,5 @@ type WorkUnit = {
     end_time: number,
     duration: number,
     tags: number[],
+    task: number
 }

@@ -1,5 +1,5 @@
 type Tag = {
-    id?: Number | null,
+    id: number,
     name: string,
     details: string | null,
     color: string | null

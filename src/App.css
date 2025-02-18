@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700&display=swap");
+@import url("./Animation.css");
 @tailwind utilities;
 @tailwind base;
 @tailwind components;
@@ -8,70 +9,6 @@
   font-weight: 700;
   font-style: normal;
 }
-
-@keyframes moveToLeft {
-  from {
-    transform: translateX(-250px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
-
-@keyframes moveToRight {
-  from {
-    transform: translateX(0px);
-  }
-  to {
-    transform: translateX(-250px);
-  }
-}
-
-.slide-in {
-  animation-name: moveToLeft;
-  animation-duration: 0.5s;
-}
-
-.slide-out {
-  animation-name: moveToRight;
-  animation-duration: 0.5s;
-}
-
-@keyframes moveToTop {
-  from {
-    transform: translateY(50px);
-    opacity: 0.5;
-  }
-
-  to {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-}
-
-@keyframes moveToBottom {
-  from {
-    transform: translateY(0px);
-    opacity: 0.5;
-  }
-
-  to {
-    transform: translateX(50px);
-    opacity: 1;
-  }
-}
-
-.slide-up {
-  animation-name: moveToTop;
-  animation-duration: 0.2s;
-}
-
-.slide-down {
-  animation-name: moveToTop;
-  animation-duration: 0.2s;
-}
-
-
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -121,7 +58,7 @@ input[type="number"] {
   }
 
   .input-container{
-    @apply flex flex-col gap-1 my-5
+    @apply flex flex-col gap-1 my-3
   }
 
   .overlay{
@@ -129,7 +66,7 @@ input[type="number"] {
   }
 
   .overlay-form{
-    @apply bg-gray-100 dark:bg-primary-bg-dark rounded-lg p-10 slide-up min-w-[500px] max-sm:min-w-[350px] max-sm:w-screen
+    @apply bg-gray-100 slide-up dark:bg-primary-bg-dark rounded-lg p-10 min-w-[500px] max-sm:min-w-[350px] max-sm:w-screen
   }
 
   .tag-task-item{

@@ -1,0 +1,79 @@
+@keyframes moveToLeft {
+    from {
+        transform: translateX(-250px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+.slide-in {
+    animation-name: moveToLeft;
+    animation-duration: 0.5s;
+}
+
+
+@keyframes moveToRight {
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(-250px);
+    }
+}
+
+.slide-out {
+    animation-name: moveToRight;
+    animation-duration: 0.5s;
+}
+
+
+@keyframes moveToTop {
+    from {
+        transform: translateY(50px);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation-name: moveToTop;
+    animation-duration: 0.2s;
+}
+
+
+@keyframes moveToBottom {
+    from {
+        transform: translateY(0px);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateX(50px);
+        opacity: 1;
+    }
+}
+
+.slide-down {
+    animation-name: moveToTop;
+    animation-duration: 0.2s;
+}
+
+
+@keyframes revealDown {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 1000px;
+    }
+}
+
+.reveal-down {
+    animation: revealDown 0.5s ease-in-out;
+    overflow: hidden;
+}
