@@ -49,7 +49,7 @@ const AddTagsButton = () => {
         dropdown &&
         <ul 
           ref={addTagRef}
-          className="absolute top-10 text-sm min-w-[200px] z-4 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg reveal-down"
+          className="drop-down top-10 max-h-[500px]"
         >
         {
           tags.map((tag,index)=>(

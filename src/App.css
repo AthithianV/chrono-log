@@ -58,7 +58,7 @@ input[type="number"] {
   }
 
   .input-container{
-    @apply flex flex-col gap-1 my-3
+    @apply flex flex-col gap-1 my-3 text-sm
   }
 
   .overlay{
@@ -75,6 +75,10 @@ input[type="number"] {
 
   .hide-on-small{
     @apply max-sm:hidden
+  }
+
+  .drop-down{
+    @apply absolute text-sm min-w-[200px] z-10 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg overflow-auto
   }
 
 }

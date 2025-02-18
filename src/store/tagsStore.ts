@@ -16,7 +16,27 @@ type Action = {
 }
 
 const useTag = create<State & Action>((set)=>({
-    tags: [{name: "Frontend", details:"", color: "#00ee00", id: 1}],
+    tags: [
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+        {name: "Frontend", details:"", color: "#00ee00", id: 1},
+    ],
     tagFormView: false,
     tag: null,
 

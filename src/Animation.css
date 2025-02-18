@@ -62,18 +62,3 @@
     animation-name: moveToTop;
     animation-duration: 0.2s;
 }
-
-
-@keyframes revealDown {
-    from {
-        max-height: 0;
-    }
-    to {
-        max-height: 1000px;
-    }
-}
-
-.reveal-down {
-    animation: revealDown 0.5s ease-in-out;
-    overflow: hidden;
-}

@@ -7,6 +7,7 @@ import WorkUnitFormControls from "./WorkUnitFormControls";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";
 import { TagIcon } from "../../assets/icons";
+import TaskDropDown from "./TaskDropDown";
 
 const WorkUnitForm = () => {
   
@@ -36,11 +37,9 @@ const WorkUnitForm = () => {
         <InputContainer title={"Details"} error={errors.description?.message}>
             <textarea className="input h-[100px]" {...register("details")}></textarea>
         </InputContainer>    
-        
+
         <InputContainer title={"Task"} error={errors.task?.message}>
-            <select className="input" {...register("task")}>
-                
-            </select>
+            <TaskDropDown setValue={setValue}/>
         </InputContainer>
 
         <InputContainer title={"Date"} error={errors.description?.message}>

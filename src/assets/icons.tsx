@@ -6,7 +6,6 @@ export const AddIcon = <FontAwesomeIcon icon={faPlus}/>
 export const SortIcon = <FontAwesomeIcon icon={faSort}/>
 export const CloseIcon = <FontAwesomeIcon icon={faXmark}/>
 
-
 /*Navbar Icons*/
 export const DashBoardIcon = <FontAwesomeIcon icon={faHouse}/>;
 export const TaskIcon = <FontAwesomeIcon icon={faList}/>;

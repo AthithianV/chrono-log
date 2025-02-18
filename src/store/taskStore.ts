@@ -16,7 +16,18 @@ type Action = {
 }
 
 const useTask = create<State & Action>((set)=>({
-    tasks: [],
+    tasks: [
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+        {id:1, name: "Development", details: null, hourly_rate: null, lump_sum: null, color: "#0011ff"},
+    ],
     createTaskview: false,
     task: null,
 
