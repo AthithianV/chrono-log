@@ -1,29 +1,47 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
 import { useForm } from "react-hook-form";
 import { WorkUnitSchema } from "../../validation/schemas";
 import InputContainer from "../form/InputContainer";
-import { z } from "zod";
 import WorkUnitFormControls from "./WorkUnitFormControls";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";
-import { TagIcon } from "../../assets/icons";
+import { CalenderIcon, TagIcon } from "../../assets/icons";
 import TaskDropDown from "./TaskDropDown";
+import { error } from "@tauri-apps/plugin-log";
+import { getToday } from "../../utils/dateTime";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const WorkUnitForm = () => {
   
-  const {selectedTags, removeTag} = useWorkUnit();
-  const {register, getValues, setValue, handleSubmit, formState: {errors}} = useForm({
+  const {selectedTags, removeTag, addWorkUnit} = useWorkUnit();
+  const {register, getValues, setValue, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(WorkUnitSchema),
     defaultValues: {
-        description: null,
-        details: null,
-        date: new Date()
+        date: getToday()
     }
   });
 
+  const resetForm = ()=>{
+    reset();
+    setValue("date", getToday());
+  }
+
   const onSubmit = (data:z.infer<typeof WorkUnitSchema>)=>{
     console.log(data);
+    try {
+        const tags = selectedTags.map(tag=>tag.id);
+        addWorkUnit({...data, tags, id: 1});        
+    } catch (err) {
+        error(JSON.stringify(err));
+    }finally{
+        resetForm();
+    }
   }
+
+
   
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
@@ -42,8 +60,22 @@ const WorkUnitForm = () => {
             <TaskDropDown setValue={setValue}/>
         </InputContainer>
 
-        <InputContainer title={"Date"} error={errors.description?.message}>
-            <input className="input" type="date" {...register("date")}/>
+        <InputContainer title={"Date"} error={errors.date?.message}>
+            {/* <input 
+                className="input"
+                type="date"
+                value={}
+                {...register("date")}
+            /> */}
+            <DatePicker
+                selected={getValues("date")}
+                onChange={(date)=>setValue("date", date?date:new Date())}
+                onSelect={(date)=>setValue("date", date?date:new Date())}
+                showIcon
+                toggleCalendarOnIconClick
+                customInput={<input className="input w-full"/>}
+                dateFormat={"dd-MM-yyyy"}
+            />
         </InputContainer>
 
         <TimeElement
@@ -62,7 +94,7 @@ const WorkUnitForm = () => {
             title={"End Time"}
         />
 
-        <InputContainer title={"Duration"} error={errors.description?.message}>
+        <InputContainer title={"Duration"} error={errors.duration?.message}>
             <input className="input" type="text" {...register("duration")} placeholder="hh:mm:ss"/>
         </InputContainer>
 

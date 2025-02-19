@@ -4,7 +4,7 @@ import { UseFormSetValue } from "react-hook-form";
 type PropType = {
     setValue: UseFormSetValue<{ 
         start_time: Date,
-        end_time: Date,
+        end_time: Date | null,
         date: Date,
         description: string | null,
         details: string | null,
@@ -20,11 +20,17 @@ type PropType = {
 const TimeElement = ({setValue, name, date, error, title}:PropType) => {
 
     const [hour, setHour] = useState<number|undefined>(); 
-    const [minutes, setMinutes] = useState<number|undefined>(); 
+    const [minutes, setMinutes] = useState<number|undefined>();
 
     useEffect(()=>{
-        date.setHours(hour?hour:0, minutes?minutes:0, 0, 0);
-        setValue(name, date);
+        setValue(name, null);
+    }, [])
+
+    useEffect(()=>{
+        if(hour || minutes){
+            date.setHours(hour?hour:0, minutes?minutes:0, 0, 0);
+            setValue(name, date);
+        }
     }, [hour, minutes]);
 
   return (
@@ -34,7 +40,7 @@ const TimeElement = ({setValue, name, date, error, title}:PropType) => {
             <input 
                 type="number"
                 className="input w-10"
-                value={hour} 
+                value={hour?hour:undefined} 
                 onChange={(e)=>setHour(Number(e.target.value))}
                 placeholder="mm"
             />
@@ -42,7 +48,7 @@ const TimeElement = ({setValue, name, date, error, title}:PropType) => {
             <input 
                 type="number"
                 className="input w-10"
-                value={minutes}
+                value={minutes?minutes:undefined}
                 onChange={(e)=>setMinutes(Number(e.target.value))}
                 placeholder="ss"
             />

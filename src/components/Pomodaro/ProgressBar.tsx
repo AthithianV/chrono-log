@@ -3,7 +3,7 @@ import Text from "../../assets/svg/Text"
 import pomodaroConfig from "../../config/pomodaro";
 import theme from "../../config/theme";
 import usePomodaro from "../../store/pomodaroStore"
-import { appendZero } from "../../utils/formatTime";
+import { appendZero } from "../../utils/dateTime";
 
 const ProgressBar = () => {
 

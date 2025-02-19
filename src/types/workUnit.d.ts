@@ -2,9 +2,9 @@ type WorkUnit = {
     id: number,
     description: string|null,
     details: string|null,
-    date: string,
-    start_time: number,
-    end_time: number,
+    date: Date,
+    start_time: Date,
+    end_time: Date | null,
     duration: number,
     tags: number[],
     task: number
