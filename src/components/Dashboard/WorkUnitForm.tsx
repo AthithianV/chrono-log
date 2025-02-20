@@ -7,7 +7,7 @@ import InputContainer from "../form/InputContainer";
 import WorkUnitFormControls from "./WorkUnitFormControls";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";
-import { CalenderIcon, TagIcon } from "../../assets/icons";
+import { TagIcon } from "../../assets/icons";
 import TaskDropDown from "./TaskDropDown";
 import { error } from "@tauri-apps/plugin-log";
 import { getToday } from "../../utils/dateTime";
@@ -30,7 +30,7 @@ const WorkUnitForm = () => {
   }
 
   const onSubmit = (data:z.infer<typeof WorkUnitSchema>)=>{
-    console.log(data);
+    console.log({data, tags: selectedTags});
     try {
         const tags = selectedTags.map(tag=>tag.id);
         addWorkUnit({...data, tags, id: 1});        
@@ -44,7 +44,9 @@ const WorkUnitForm = () => {
 
   
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
+    <form 
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
 
         <WorkUnitFormControls/>
         
@@ -84,6 +86,7 @@ const WorkUnitForm = () => {
             date={new Date(getValues("date"))}
             error={errors.start_time?.message}
             title={"Start Time"}
+            value={getValues("start_time")}
         />
 
         <TimeElement 
@@ -92,6 +95,7 @@ const WorkUnitForm = () => {
             date={new Date(getValues("date"))}
             error={errors.end_time?.message}
             title={"End Time"}
+            value={getValues("end_time")}
         />
 
         <InputContainer title={"Duration"} error={errors.duration?.message}>

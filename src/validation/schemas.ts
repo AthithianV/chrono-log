@@ -26,8 +26,9 @@ export const WorkUnitSchema = z.object({
             const parts = val.split(":");
             if(parts.length!=3) return false;
             let duration = Number(parts[0])*3600 + Number(parts[1])*60 + Number(parts[2]);
-            
-            return isNaN(duration) ? false : duration;
+            console.log(isNaN(duration));
+                        
+            return !isNaN(duration) ? `${duration}` : false;
         }else{
             return false;
         }

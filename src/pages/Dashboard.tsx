@@ -23,7 +23,7 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {workUnitFormView && <div className="w-[350px] p-2 hide-on-small">
+      {workUnitFormView && <div className="w-[350px] h-screen overflow-auto p-2 hide-on-small">
           <WorkUnitForm />
       </div>}
 

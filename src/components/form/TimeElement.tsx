@@ -14,10 +14,11 @@ type PropType = {
     name: "start_time" | "end_time",
     date: Date,
     error: string | undefined,
-    title: string
+    title: string,
+    value: Date|null
 }
 
-const TimeElement = ({setValue, name, date, error, title}:PropType) => {
+const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
 
     const [hour, setHour] = useState<number|undefined>(); 
     const [minutes, setMinutes] = useState<number|undefined>();
@@ -40,17 +41,17 @@ const TimeElement = ({setValue, name, date, error, title}:PropType) => {
             <input 
                 type="number"
                 className="input w-10"
-                value={hour?hour:undefined} 
+                value={value?value.getHours():undefined} 
                 onChange={(e)=>setHour(Number(e.target.value))}
-                placeholder="mm"
+                placeholder="hh"
             />
             <span>:</span>
             <input 
                 type="number"
                 className="input w-10"
-                value={minutes?minutes:undefined}
+                value={value?value.getMinutes():undefined}
                 onChange={(e)=>setMinutes(Number(e.target.value))}
-                placeholder="ss"
+                placeholder="mm"
             />
         </div>
         {error && <span className="text-sm text-red-500">*{error}</span>}
