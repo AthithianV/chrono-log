@@ -4,7 +4,7 @@ const TagItem = ({name, color}:{name:string, color:string}) => {
   return (
     <div className="py-1 px-2" style={{backgroundColor: color?color:undefined}}>
         {TagIcon}
-        <span>{name}</span>        
+        <span>{name}</span>
     </div>
   )
 }

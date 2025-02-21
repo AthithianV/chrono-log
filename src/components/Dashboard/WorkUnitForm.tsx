@@ -46,7 +46,7 @@ const WorkUnitForm = () => {
   return (
     <form 
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
+        className="min-w-[400px] ml-auto h-full py-4 px-10 background max-sm:w-full max-sm:m-0 max-sm:h-[90%]">
 
         <WorkUnitFormControls/>
         
@@ -107,7 +107,7 @@ const WorkUnitForm = () => {
                 selectedTags.map((tag, index)=>(
                     <li 
                       key={index}
-                      className="py-1 px-1 m-[0.5px] text-xs font-semibold rounded-sm flex-center gap-1 cursor-pointer hover-shadow text-gray-200"
+                      className="py-1 px-1 m-[0.5px] text-xs font-semibold rounded-sm flex-center gap-1 cursor-pointer hover-shadow"
                       style={{backgroundColor: tag.color?tag.color:undefined}}
                       onClick={()=>removeTag(tag.id)}
                     >

@@ -1,6 +1,7 @@
 import DashboardControls from "../components/Dashboard/DashboardControls"
 import WorkUnitForm from "../components/Dashboard/WorkUnitForm"
 import WorkUnitItem from "../components/Dashboard/WorkUnitItem";
+import OverlayLayout from "../components/Layouts/OverlayLayout";
 import useWorkUnit from "../store/workUnitStore"
 
 const Dashboard = () => {
@@ -23,15 +24,9 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {workUnitFormView && <div className="w-[350px] h-screen overflow-auto p-2 hide-on-small">
+      {workUnitFormView && <OverlayLayout>
           <WorkUnitForm />
-      </div>}
-
-      {workUnitFormView && <div className="hidden max-sm:block">
-        <div className="overlay">
-          <WorkUnitForm/>
-        </div>
-      </div>}
+      </OverlayLayout>}
       
     </div>
   )
