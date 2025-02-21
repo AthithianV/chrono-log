@@ -8,7 +8,7 @@ import OverlayLayout from "../components/Layouts/OverlayLayout";
 
 const Tasks = () => {
 
-  const { createTaskview, tasks, toggleCreateTaskView, setTasks, selectTask } = useTask();
+  const { taskFormView, tasks, toggleTaskFormView, setTasks, selectTask } = useTask();
   const [sort, setSort] = useState("ASC");
 
   useEffect(()=>{
@@ -25,7 +25,16 @@ const Tasks = () => {
   return (
     <div className="slide-up p-10 max-sm:p-2">
       <div className="flex gap-2 pb-5">
-        {createTaskview && <OverlayLayout><TaskForm/></OverlayLayout>}
+        
+        <OverlayLayout
+          view={taskFormView}
+          childPositionX="end"
+          childPositionY="center"
+          openAnimation="overlay-form-show"
+          closeAnimation="overlay-form-hide">
+          <TaskForm/>
+        </OverlayLayout>
+
         <button
           type="button"
           className="btn"
@@ -40,7 +49,7 @@ const Tasks = () => {
           type="text"/>
 
         <button
-          onClick={()=>toggleCreateTaskView()}
+          onClick={()=>toggleTaskFormView()}
           className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Task

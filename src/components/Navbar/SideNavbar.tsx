@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 
 import { navItems } from "../../utils/navItems";
 import { SettingsIcon } from "../../assets/icons";
-import Brand from "./Brand";
 
 const SideNavbar = () => {
   
@@ -11,10 +10,7 @@ const SideNavbar = () => {
   return (
     <nav 
     className="flex flex-col justify-between h-full px-2 pb-2 text-xl w-[250px] bg-secondary-bg-light dark:bg-secondary-bg-dark">
-      <div>
-
-        {/* <Brand/> */}
-        
+      <div>        
         <ul>
           {
             navItems.map((item, index)=>(

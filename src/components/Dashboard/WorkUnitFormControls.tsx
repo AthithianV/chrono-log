@@ -9,22 +9,10 @@ const WorkUnitFormControls = () => {
 
   return (
     <div>
-        <div className="hide-on-small">
-            <AddTagsButton/>
-            <div className="my-2 flex justify-end gap-2">
-                <button type="button" className="btn" onClick={()=>toggleWorkUnitFormView(false)}>
-                    {CloseIcon}
-                    <span>Cancel</span>
-                </button>
-                <SubmitButton name={"Save"} icon={SaveIcon}/>
-            </div>
-        </div>
-
-        <div className="hidden max-sm:block">
+        <div >
 
             <div className="flex items-center justify-between gap-4">
 
-                <h1 className="font-semibold text-sm">Add Work Unit</h1>
 
                 <button 
                     className="text-red-500 text-lg"
@@ -32,12 +20,14 @@ const WorkUnitFormControls = () => {
                     onClick={()=>toggleWorkUnitFormView(false)}
                 >{CloseIcon}</button>
 
+                <div className="flex items-center justify-end gap-4 text-lg">
+                    <AddTagsButton/>
+                    <SubmitButton name={"Save"} icon={SaveIcon}/>
+                </div>
+
             </div>
 
-            <div className="flex items-center justify-end gap-4 text-lg">
-                <SubmitButton name={"Save"} icon={SaveIcon}/>
-                <AddTagsButton/>
-            </div>
+            
             
         </div>
     </div>

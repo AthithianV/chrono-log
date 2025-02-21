@@ -10,16 +10,16 @@ const TaskOption = ({payForm, setPayForm}:PropType) => {
             <div 
                 className='bg-white h-4 w-4 rounded-full flex-center border border-black'
                 onClick={()=>setPayForm("hourly_rate")}>
-                {payForm==="hourly_rate" && <span className='h-3 w-3 rounded-full bg-sky-400'></span>}
+                {payForm==="hourly_rate" && <span className='h-3 w-3 rounded-full bg-primary cursor-pointer shadow'></span>}
             </div>
             <label>Hourly Rate</label>
         </div>
 
         <div className='flex-center gap-2'>
             <div 
-                className='bg-white h-4 w-4 rounded-full flex-center border border-black'
+                className='bg-white h-4 w-4 rounded-full flex-center border border-black cursor-pointer shadow'
                 onClick={()=>setPayForm("lump_sum")}>
-                {payForm==="lump_sum" && <span className='h-3 w-3 rounded-full bg-sky-400'></span>}
+                {payForm==="lump_sum" && <span className='h-3 w-3 rounded-full bg-primary'></span>}
             </div>
             <label htmlFor='lump_sum'>Lump Sum</label>
         </div>

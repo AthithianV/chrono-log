@@ -66,7 +66,7 @@ const AddTagsButton = () => {
           ))
         }
         <li 
-          className="p-2 rounded cursor-pointer hover:bg-slate-200"
+          className="p-2 cursor-pointer hover:bg-slate-200"
           onClick={()=>{
             setDropdown(false);
             toggleWorkUnitFormView(false);

@@ -13,7 +13,7 @@ import TaskOption from './TaskOption';
 
 const TaskForm = () => {
 
-    const { toggleCreateTaskView, addTask, task, updateTask } = useTask();
+    const { toggleTaskFormView, addTask, task, updateTask } = useTask();
     const [payForm, setPayForm] = useState<"hourly_rate"|"lump_sum">("hourly_rate");
 
     const {register, handleSubmit, formState:{errors}} = useForm(
@@ -23,7 +23,7 @@ const TaskForm = () => {
                 details: task?task.details:null,
                 hourly_rate: task?task.hourly_rate:null,
                 lump_sum: task?task.lump_sum:null,
-                color: task?task.color:null
+                color: task?task.color:"#000000"
             },
             resolver: zodResolver(TaskSchema)
         }
@@ -46,7 +46,7 @@ const TaskForm = () => {
                 addTask({...data, id: result.lastInsertId} as Task);
             }
             db.close();
-            toggleCreateTaskView();          
+            toggleTaskFormView();          
         } catch (err) {
             error("Error Occured: "+ JSON.stringify(err));
         }
@@ -59,7 +59,7 @@ const TaskForm = () => {
                 <h1>Create New Task</h1>
                 <button 
                     className='text-red-500'
-                    onClick={()=>toggleCreateTaskView()}
+                    onClick={()=>toggleTaskFormView()}
                 >{CloseIcon}</button>
             </div>
 

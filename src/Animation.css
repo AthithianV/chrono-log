@@ -1,6 +1,6 @@
 @keyframes moveToLeft {
     from {
-        transform: translateX(-250px);
+        transform: translateX(-100%);
     }
     to {
         transform: translateX(0px);
@@ -18,7 +18,7 @@
         transform: translateX(0px);
     }
     to {
-        transform: translateX(-250px);
+        transform: translateX(-100%);
     }
 }
 
@@ -76,4 +76,33 @@
 .drop-down-animation{
     animation-name: dropdown;
     animation-duration: 0.2s;
+}
+
+@keyframes formShow {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+.overlay-form-show {
+    animation-name: formShow;
+    animation-duration: 0.5s;
+}
+
+
+@keyframes formHide {
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.overlay-form-hide {
+    animation-name: formHide;
+    animation-duration: 0.5s;
 }

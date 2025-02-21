@@ -25,7 +25,16 @@ const Tags = () => {
   return (
     <div className="slide-up p-10 max-sm:p-2">
       <div className="flex gap-2 pb-5">
-        {tagFormView && <OverlayLayout><TagForm/></OverlayLayout>}
+        
+        <OverlayLayout
+          view={tagFormView}
+          childPositionX="end"
+          childPositionY="center"
+          openAnimation="overlay-form-show"
+          closeAnimation="overlay-form-hide">
+          <TagForm/>
+        </OverlayLayout>
+        
         <button
           type="button"
           className="btn"

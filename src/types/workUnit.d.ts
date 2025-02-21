@@ -6,6 +6,6 @@ type WorkUnit = {
     start_time: Date,
     end_time: Date | null,
     duration: number,
-    tags: number[],
-    task: number
+    tags: Tag[],
+    task: Task
 }

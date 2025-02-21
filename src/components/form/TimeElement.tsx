@@ -11,11 +11,11 @@ type PropType = {
         duration: number,
         task: number
     }>,
-    name: "start_time" | "end_time",
-    date: Date,
+    name: "start_time" | "end_time" | "duration",
+    date?: Date,
     error: string | undefined,
     title: string,
-    value: Date|null
+    value: number|null|undefined
 }
 
 const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
@@ -24,11 +24,13 @@ const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
     const [minutes, setMinutes] = useState<number|undefined>();
 
     useEffect(()=>{
-        setValue(name, null);
+        setValue(name, name==="duration"?0:null);
     }, [])
 
     useEffect(()=>{
-        if(hour || minutes){
+        if(name=="duration"){
+            setValue(name, (hour?hour:0)*3600+(minutes?minutes:0)*60);
+        }else if(date){
             date.setHours(hour?hour:0, minutes?minutes:0, 0, 0);
             setValue(name, date);
         }
@@ -41,7 +43,9 @@ const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
             <input 
                 type="number"
                 className="input w-10"
-                value={value?value.getHours():undefined} 
+                value={name==="duration"
+                        ?(value?value/3600:undefined)
+                        :value?value:undefined} 
                 onChange={(e)=>setHour(Number(e.target.value))}
                 placeholder="hh"
             />
@@ -49,7 +53,9 @@ const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
             <input 
                 type="number"
                 className="input w-10"
-                value={value?value.getMinutes():undefined}
+                value={name==="duration"
+                    ?(value?value/60:undefined)
+                    :value?value:undefined} 
                 onChange={(e)=>setMinutes(Number(e.target.value))}
                 placeholder="mm"
             />

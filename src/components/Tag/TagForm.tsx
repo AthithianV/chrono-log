@@ -17,7 +17,7 @@ const TagForm = () => {
             defaultValues: {
                 name: tag?tag.name:"",
                 details: tag?tag.details:null,
-                color: tag?tag.color:null
+                color: tag?tag.color:"#000000"
             },
             resolver: zodResolver(TagSchema)
         }

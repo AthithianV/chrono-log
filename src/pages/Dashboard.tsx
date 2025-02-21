@@ -15,7 +15,7 @@ const Dashboard = () => {
         <DashboardControls/>
         <ul>
           {
-            workUnits.map((unit, index)=>(
+            workUnits[0].units.map((unit, index)=>(
               <li key={index}>
                 <WorkUnitItem workunit={unit}/>
               </li>
@@ -24,7 +24,13 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {workUnitFormView && <OverlayLayout>
+      {<OverlayLayout
+        view={workUnitFormView}
+        openAnimation="overlay-form-show"
+        closeAnimation="overlay-form-hide"
+        childPositionX="end"
+        childPositionY="center"
+        >
           <WorkUnitForm />
       </OverlayLayout>}
       

@@ -2,13 +2,19 @@ import { create } from "zustand";
 
 
 type State = {
-    workUnits: WorkUnit[],
+    workUnits: {
+        date: Date,
+        units: WorkUnit[]
+    }[],
     selectedTags: Tag[],
     workUnitFormView: boolean
 }
 
 type Action = {
-    setWorkUnits: (workUnits:WorkUnit[])=>void,
+    setWorkUnits: (workUnits:{
+        date: Date,
+        units: WorkUnit[]
+    }[])=>void,
     selectTag: (tag:Tag)=>void,
     removeTag: (tagId:number)=>void,
     addWorkUnit: (workUnit:WorkUnit)=>void,
@@ -17,19 +23,50 @@ type Action = {
 }
 
 const useWorkUnit = create<State & Action>((set)=>({
-    workUnits: [],
+    workUnits: [{
+        date: new Date(),
+        units: [{
+            id: 1,
+            description: "Tauri",
+            details: "Worked on Chronolog Overlay Feature",
+            date: new Date(),
+            start_time: new Date(2025, 1, 21, 11, 30, 0),
+            end_time: new Date(2025, 1, 21, 13, 10, 0),
+            duration: 0,
+            task: {
+                id: 1,
+                name: "Development",
+                color: "#0011ff"
+            },
+            tags: [
+                {
+                    id: 1,
+                    name: "Frontend",
+                    color: "#00ee00"
+                }
+            ]
+        }]
+    }],
     workUnitFormView: false,
     selectedTags: [],
 
-    setWorkUnits: (workUnits)=>set(()=>({workUnits})),
+    setWorkUnits: (workUnits)=>set(()=>{
+        return {workUnits}
+    }),
     addWorkUnit: (workUnit)=>set((state)=>{
-        state.workUnits.push(workUnit);
+        const index = state.workUnits.findIndex(unit=>unit.date===workUnit.date);
+        if(index==-1){
+            state.workUnits.unshift({date: workUnit.date, units: [workUnit]});
+        }else{
+            state.workUnits[index].units.unshift(workUnit);
+        }
         return {workUnits: state.workUnits};
     }),
     updateWorkUnit: (workUnit) => set((state)=>{
-        let index = state.workUnits.findIndex(w=>w.id===workUnit.id);
+        let index = state.workUnits.findIndex(unit=>unit.date===workUnit.date);
         if(index!=-1){
-            state.workUnits[index] = workUnit;
+            let unitIndex = state.workUnits[index].units.findIndex(unit=>unit.id===workUnit.id);
+            state.workUnits[index].units[unitIndex] = workUnit;
             return {workUnits: state.workUnits};
         }
         return {};

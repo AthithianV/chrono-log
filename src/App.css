@@ -5,8 +5,8 @@
 @tailwind components;
 
 :root{
-  --title-bar-height: 5.5vh;
-  --body-height: 94.5vh;
+  --title-bar-height: 6vh;
+  --body-height: 94vh;
 }
 
 .logo-font {
@@ -67,11 +67,11 @@ input[type="number"] {
   }
 
   .overlay{
-    @apply h-[var(--body-height)] w-screen bg-[rgba(0,0,0,0.8)] fixed top-[var(--title-bar-height)] left-0 flex justify-center items-center max-sm:items-end z-10 
+    @apply h-[var(--body-height)] w-screen bg-[rgba(0,0,0,0.8)] fixed top-[var(--title-bar-height)] left-0 max-sm:items-end z-10 
   }
 
   .overlay-form{
-    @apply bg-gray-100 slide-up dark:bg-primary-bg-dark rounded-lg p-10 min-w-[500px] max-sm:min-w-[350px] max-sm:w-screen
+    @apply bg-secondary-bg-light dark:bg-primary-bg-dark py-5 px-10 w-[400px] max-sm:min-w-[350px] max-sm:w-screen h-full
   }
 
   .tag-task-item{
@@ -87,7 +87,7 @@ input[type="number"] {
   }
 
   .background{
-    @apply bg-primary-bg-light dark:bg-primary-bg-dark
+    @apply bg-secondary-bg-light dark:bg-primary-bg-dark
   }
 
 }

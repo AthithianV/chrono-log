@@ -1,6 +1,5 @@
 import { DarkThemeIcon, LightThemeIcon, ToggleButtonIcon } from "../../assets/icons"
 import useTheme from "../../store/themeStore"
-import Brand from "./Brand"
 
 type PropType={
     setOverlay: React.Dispatch<React.SetStateAction<boolean>>
@@ -11,7 +10,7 @@ const TopNavbar = ({setOverlay}:PropType) => {
     const {theme, toggleTheme} = useTheme();
 
   return (
-    <nav className="flex justify-between items-center py-2 px-4 text-2xl w-full shadow">
+    <nav className="flex justify-between items-center h-[var(--title-bar-height)] py-2 px-4 text-lg w-full shadow">
         <div className="flex-center gap-4">
             <div onClick={()=>setOverlay(true)} className="py-1 px-2 rounded hover:shadow cursor-pointer">
                 {ToggleButtonIcon}
