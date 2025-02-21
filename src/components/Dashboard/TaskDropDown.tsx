@@ -12,15 +12,22 @@ type PropType = {
       start_time: Date; 
       end_time: Date | null; 
       duration: number; 
-    }>
+    }>,
+  selectedUnitTask: Task|null
 }
 
-const TaskDropDown = ({setValue}:PropType) => {
+const TaskDropDown = ({setValue, selectedUnitTask}:PropType) => {
 
   const {tasks} = useTask();
   const [task, setTask] = useState<Task|null>(null);
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef<HTMLUListElement|null>(null);
+
+  useEffect(()=>{
+    if(selectedUnitTask){
+      setTask(selectedUnitTask);
+    }
+  }, []);
 
   useEffect(()=>{
   

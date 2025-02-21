@@ -7,6 +7,7 @@
 :root{
   --title-bar-height: 6vh;
   --body-height: 94vh;
+  --primary-color: "#FD4760";
 }
 
 .logo-font {

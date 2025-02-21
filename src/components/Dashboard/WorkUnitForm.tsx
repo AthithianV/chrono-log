@@ -7,7 +7,6 @@ import InputContainer from "../form/InputContainer";
 import WorkUnitFormControls from "./WorkUnitFormControls";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";
-import { TagIcon } from "../../assets/icons";
 import TaskDropDown from "./TaskDropDown";
 import { error } from "@tauri-apps/plugin-log";
 import { getToday } from "../../utils/dateTime";
@@ -18,12 +17,17 @@ import useTask from "../../store/taskStore";
 
 const WorkUnitForm = () => {
   
-  const {selectedTags, removeTag, addWorkUnit} = useWorkUnit();
+  const {selectedTags, selectedUnit, removeTag, addWorkUnit} = useWorkUnit();
   const {tasks} = useTask();
   const {register, getValues, setValue, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(WorkUnitSchema),
     defaultValues: {
-        date: getToday()
+        description: selectedUnit?selectedUnit.description:null,
+        details: selectedUnit?selectedUnit.details:null,
+        date: selectedUnit?selectedUnit.date:getToday(),
+        start_time: selectedUnit?selectedUnit.start_time:undefined,
+        end_time: selectedUnit?selectedUnit.end_time:null,
+        task: selectedUnit?selectedUnit.task.id:undefined,
     }
   });
 
@@ -65,7 +69,7 @@ const WorkUnitForm = () => {
         </InputContainer>    
 
         <InputContainer title={"Task"} error={errors.task?.message}>
-            <TaskDropDown setValue={setValue}/>
+            <TaskDropDown setValue={setValue} selectedUnitTask={selectedUnit?selectedUnit.task:null}/>
         </InputContainer>
 
         <InputContainer title={"Date"} error={errors.date?.message}>

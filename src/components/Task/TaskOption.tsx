@@ -6,22 +6,43 @@ type PropType = {
 const TaskOption = ({payForm, setPayForm}:PropType) => {
   return (
     <div className='flex gap-10 mb-2'>
-        <div className='flex-center gap-2'>
-            <div 
-                className='bg-white h-4 w-4 rounded-full flex-center border border-black'
-                onClick={()=>setPayForm("hourly_rate")}>
-                {payForm==="hourly_rate" && <span className='h-3 w-3 rounded-full bg-primary cursor-pointer shadow'></span>}
-            </div>
+        <div className='flex-center gap-1'>
+            <svg width="24" height="24" viewBox="0 0 24 24" 
+            className="cursor-pointer" onClick={() => setPayForm("hourly_rate")}>
+
+            <circle 
+                cx="12" 
+                cy="12"
+                r="7"
+                fill="white" 
+                stroke="black" strokeWidth="1" className="shadow" />
+
+            {payForm === "hourly_rate" && (
+                <circle 
+                    cx="12"
+                    cy="12" 
+                    r="6"
+                    fill="#FD4760"
+                />
+            )}
+            </svg>
             <label>Hourly Rate</label>
         </div>
 
-        <div className='flex-center gap-2'>
-            <div 
-                className='bg-white h-4 w-4 rounded-full flex-center border border-black cursor-pointer shadow'
-                onClick={()=>setPayForm("lump_sum")}>
-                {payForm==="lump_sum" && <span className='h-3 w-3 rounded-full bg-primary'></span>}
-            </div>
-            <label htmlFor='lump_sum'>Lump Sum</label>
+        <div className='flex-center gap-1'>
+            <svg width="24" height="24" viewBox="0 0 24 24" 
+            className="cursor-pointer" onClick={() => setPayForm("lump_sum")}>
+
+            <circle cx="12" cy="12" r="7" fill="white" 
+                stroke="black" strokeWidth="1" className="shadow" />
+
+            {payForm === "lump_sum" && (
+                <circle cx="12" cy="12" 
+                r="6" fill="#FD4760"
+                />
+            )}
+            </svg>
+            <label>Lump Sum</label>
         </div>
     </div>
   )

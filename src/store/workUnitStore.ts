@@ -6,8 +6,9 @@ type State = {
         date: Date,
         units: WorkUnit[]
     }[],
+    selectedUnit: WorkUnit | null,    
     selectedTags: Tag[],
-    workUnitFormView: boolean
+    workUnitFormView: boolean,
 }
 
 type Action = {
@@ -15,6 +16,7 @@ type Action = {
         date: Date,
         units: WorkUnit[]
     }[])=>void,
+    selectUnit: (unit:WorkUnit)=>void,
     selectTag: (tag:Tag)=>void,
     removeTag: (tagId:number)=>void,
     addWorkUnit: (workUnit:WorkUnit)=>void,
@@ -49,10 +51,12 @@ const useWorkUnit = create<State & Action>((set)=>({
     }],
     workUnitFormView: false,
     selectedTags: [],
+    selectedUnit: null,
 
     setWorkUnits: (workUnits)=>set(()=>{
         return {workUnits}
     }),
+    selectUnit: (workUnit)=>set(()=>({selectedUnit: workUnit, workUnitFormView: true})),
     addWorkUnit: (workUnit)=>set((state)=>{
         const index = state.workUnits.findIndex(unit=>unit.date===workUnit.date);
         if(index==-1){

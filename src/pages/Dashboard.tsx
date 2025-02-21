@@ -13,7 +13,7 @@ const Dashboard = () => {
 
       <div className="flex-1">
         <DashboardControls/>
-        <ul>
+        <ul className="py-2">
           {
             workUnits[0].units.map((unit, index)=>(
               <li key={index}>
