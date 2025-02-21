@@ -4,6 +4,11 @@
 @tailwind base;
 @tailwind components;
 
+:root{
+  --title-bar-height: 5.5vh;
+  --body-height: 94.5vh;
+}
+
 .logo-font {
   font-family: "Poppins", serif;
   font-weight: 700;
@@ -62,7 +67,7 @@ input[type="number"] {
   }
 
   .overlay{
-    @apply h-full w-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0 flex justify-center items-center max-sm:items-end z-10 
+    @apply h-[var(--body-height)] w-screen bg-[rgba(0,0,0,0.8)] fixed top-[var(--title-bar-height)] left-0 flex justify-center items-center max-sm:items-end z-10 
   }
 
   .overlay-form{
@@ -79,6 +84,10 @@ input[type="number"] {
 
   .drop-down{
     @apply absolute text-sm min-w-[200px] z-10 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg overflow-auto
+  }
+
+  .background{
+    @apply bg-primary-bg-light dark:bg-primary-bg-dark
   }
 
 }

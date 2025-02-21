@@ -7,7 +7,7 @@ import useWorkUnit from "../../store/workUnitStore";
 const AddTagsButton = () => {
   
   const {tags} = useTag();
-  const {selectTag} = useWorkUnit();
+  const {selectTag, toggleWorkUnitFormView} = useWorkUnit();
   const [dropdown, setDropdown] = useState(false);
   const addTagRef = useRef<HTMLUListElement|null>(null);
   const btnRef = useRef<HTMLButtonElement|null>(null);
@@ -67,7 +67,10 @@ const AddTagsButton = () => {
         }
         <li 
           className="p-2 rounded cursor-pointer hover:bg-slate-200"
-          onClick={()=>setDropdown(false)}
+          onClick={()=>{
+            setDropdown(false);
+            toggleWorkUnitFormView(false);
+          }}
           >
           <Link to={"/tags"} className="flex items-center justify-start gap-2">
             <span>

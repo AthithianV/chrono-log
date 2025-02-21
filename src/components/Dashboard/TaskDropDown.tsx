@@ -49,7 +49,7 @@ const TaskDropDown = ({setValue}:PropType) => {
 
   return (
     <div className="relative">
-        <div className="input cursor-pointer flex justify-between items-center" onClick={()=>setDropdown(prev=>!prev)}>
+        <div className="input cursor-pointer flex justify-between items-center" onClick={()=>setDropdown(true)}>
           <div>
             {
               task
