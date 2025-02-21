@@ -46,7 +46,7 @@ const WorkUnitForm = () => {
   return (
     <form 
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
+        className="w-full animate__slideInRight p-4 max-sm:bg-primary-bg-light max-sm:dark:bg-primary-bg-dark max-sm:rounded-t-xl">
 
         <WorkUnitFormControls/>
         
