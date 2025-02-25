@@ -17,7 +17,7 @@ import useTask from "../../store/taskStore";
 
 const WorkUnitForm = () => {
   
-  const {selectedTags, selectedUnit, removeTag, addWorkUnit} = useWorkUnit();
+  const {selectedTags, selectedUnit, removeTag, addWorkUnit, toggleWorkUnitFormView} = useWorkUnit();
   const {tasks} = useTask();
   const {register, getValues, setValue, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(WorkUnitSchema),
@@ -48,6 +48,7 @@ const WorkUnitForm = () => {
         error(JSON.stringify(err));
     }finally{
         resetForm();
+        toggleWorkUnitFormView(false);
     }
   }
 
@@ -116,20 +117,19 @@ const WorkUnitForm = () => {
             value={getValues("duration")}
         />
 
-        <div className="flex flex-wrap max-h-[100px] overflow-auto p-1">
-            {
-                selectedTags.map((tag, index)=>(
+        <ul className="flex gap-1 flex-wrap max-h-[75px] overflow-auto p-1">
+            {                
+                (selectedUnit?selectedUnit.tags:selectedTags).map((tag, index)=>(
                     <li 
                       key={index}
                       className="m-[0.5px]"
-                      style={{backgroundColor: tag.color?tag.color:undefined}}
                       onClick={()=>removeTag(tag.id)}
                     >
                         <TagItem name={tag.name} color={tag.color}/>
                     </li>
                 ))
             }
-        </div>
+        </ul>
 
     </form>
   )

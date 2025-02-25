@@ -15,10 +15,16 @@ const Dashboard = () => {
         <DashboardControls/>
         <ul className="py-2">
           {
-            workUnits[0].units.map((unit, index)=>(
-              <li key={index}>
-                <WorkUnitItem workunit={unit}/>
-              </li>
+            workUnits.map((date, index)=>(
+              <ul key={index}>
+                {
+                  date.units.map((workunit, index)=>(
+                    <li key={index}>
+                      <WorkUnitItem workunit={workunit}/>
+                    </li>
+                  ))
+                }
+              </ul>
             ))
           }
         </ul>
