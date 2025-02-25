@@ -16,7 +16,7 @@ type Action = {
         date: Date,
         units: WorkUnit[]
     }[])=>void,
-    selectUnit: (unit:WorkUnit)=>void,
+    selectUnit: (unit:WorkUnit|null)=>void,
     selectTag: (tag:Tag)=>void,
     removeTag: (tagId:number)=>void,
     addWorkUnit: (workUnit:WorkUnit)=>void,
@@ -45,6 +45,36 @@ const useWorkUnit = create<State & Action>((set)=>({
                     id: 1,
                     name: "Frontend",
                     color: "#00ee00"
+                },
+                {
+                    id: 1,
+                    name: "Frontend",
+                    color: "#00ee00"
+                },
+                {
+                    id: 2,
+                    name: "Frontend",
+                    color: "#00e"
+                },
+                {
+                    id: 3,
+                    name: "Frontend",
+                    color: "#e00"
+                },
+                {
+                    id: 4,
+                    name: "Frontend",
+                    color: "#ee0"
+                },
+                {
+                    id: 5,
+                    name: "Frontend",
+                    color: "#0ee"
+                },
+                {
+                    id: 6,
+                    name: "Frontend",
+                    color: "#e0e"
                 }
             ]
         }]

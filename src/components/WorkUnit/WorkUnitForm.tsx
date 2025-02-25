@@ -7,7 +7,7 @@ import InputContainer from "../form/InputContainer";
 import WorkUnitFormControls from "./WorkUnitFormControls";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";
-import TaskDropDown from "./TaskDropDown";
+import TaskDropDown from "../Dashboard/TaskDropDown";
 import { error } from "@tauri-apps/plugin-log";
 import { getToday } from "../../utils/dateTime";
 import DatePicker from "react-datepicker";
@@ -39,7 +39,7 @@ const WorkUnitForm = () => {
   const onSubmit = (data:z.infer<typeof WorkUnitSchema>)=>{
     console.log({data, tags: selectedTags});
     try {
-        const tags = selectedTags.map(tag=>tag.id);
+        const tagIds = selectedTags.map(tag=>tag.id);
         const task = tasks.find(t=>t.id===data.task);
         if(task){
             addWorkUnit({...data, task, tags: selectedTags, id: 1});
@@ -65,7 +65,7 @@ const WorkUnitForm = () => {
         </InputContainer>   
 
         <InputContainer title={"Details"} error={errors.description?.message}>
-            <textarea className="input h-[100px]" {...register("details")}></textarea>
+            <textarea className="h-[90px] py-1 px-2 input" {...register("details")}></textarea>
         </InputContainer>    
 
         <InputContainer title={"Task"} error={errors.task?.message}>

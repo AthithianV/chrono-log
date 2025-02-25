@@ -1,7 +1,7 @@
 import { CloseIcon, SaveIcon } from "../../assets/icons";
 import useWorkUnit from "../../store/workUnitStore"
 import SubmitButton from "../form/SubmitButton";
-import AddTagsButton from "./AddTagsButton"
+import AddTagsButton from "../Dashboard/AddTagsButton"
 
 const WorkUnitFormControls = () => {
 

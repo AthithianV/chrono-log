@@ -42,7 +42,7 @@ const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
         <div className="flex gap-2">
             <input 
                 type="number"
-                className="input w-10"
+                className="input w-10 flex-1"
                 value={name==="duration"
                         ?(value?value/3600:undefined)
                         :value?value:undefined} 
@@ -52,7 +52,7 @@ const TimeElement = ({setValue, name, date, error, title, value}:PropType) => {
             <span>:</span>
             <input 
                 type="number"
-                className="input w-10"
+                className="input w-10 flex-1"
                 value={name==="duration"
                     ?(value?value/60:undefined)
                     :value?value:undefined} 

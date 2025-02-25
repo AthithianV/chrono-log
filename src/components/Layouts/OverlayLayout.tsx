@@ -8,6 +8,7 @@ type PropType = {
   isSidebar?: boolean;
   childPositionX: "start" | "end" | "center";
   childPositionY: "end" | "center" | "start";
+  handleClose: (view: boolean) => void
 };
 
 const OverlayLayout = ({
@@ -17,28 +18,19 @@ const OverlayLayout = ({
   closeAnimation,
   isSidebar,
   childPositionX,
-  childPositionY
+  childPositionY,
+  handleClose
 }: PropType) => {
 
-  const [show, setShow] = useState(false);
   const [isClose, setIsClose] = useState(false);
   const innerRef = useRef<null | HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (view) {
-      setIsClose(false);
-      setShow(true);
-    }else{
-      setIsClose(true);
-    }
-  }, [view]);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     if (isClose) {
       timer = setTimeout(() => {
         setIsClose(false);
-        setShow(false);
+        handleClose(false);
       }, 300);
     }
     return () => clearTimeout(timer);
@@ -60,7 +52,7 @@ const OverlayLayout = ({
     }
   };
 
-  if (!show) return null;
+  if (!view) return null;
 
   return (
     <div className={`overlay flex items-${childPositionY} justify-${childPositionX}`} onClick={handleClick}>

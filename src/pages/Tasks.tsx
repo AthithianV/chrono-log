@@ -31,7 +31,8 @@ const Tasks = () => {
           childPositionX="end"
           childPositionY="center"
           openAnimation="overlay-form-show"
-          closeAnimation="overlay-form-hide">
+          closeAnimation="overlay-form-hide"
+          handleClose={toggleTaskFormView}>
           <TaskForm/>
         </OverlayLayout>
 
@@ -45,7 +46,7 @@ const Tasks = () => {
         </button>
 
         <input 
-          className="input px-5"
+          className="input px-5 flex-1"
           type="text"/>
 
         <button

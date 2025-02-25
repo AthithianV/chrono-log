@@ -1,12 +1,12 @@
 import DashboardControls from "../components/Dashboard/DashboardControls"
-import WorkUnitForm from "../components/Dashboard/WorkUnitForm"
-import WorkUnitItem from "../components/Dashboard/WorkUnitItem";
+import WorkUnitForm from "../components/WorkUnit/WorkUnitForm"
+import WorkUnitItem from "../components/WorkUnit/WorkUnitItem";
 import OverlayLayout from "../components/Layouts/OverlayLayout";
 import useWorkUnit from "../store/workUnitStore"
 
 const Dashboard = () => {
 
-  const { workUnitFormView, workUnits } = useWorkUnit();
+  const { workUnitFormView, workUnits, toggleWorkUnitFormView } = useWorkUnit();
 
   return (
     <div className="slide-up p-4 flex">
@@ -30,6 +30,7 @@ const Dashboard = () => {
         closeAnimation="overlay-form-hide"
         childPositionX="end"
         childPositionY="center"
+        handleClose={toggleWorkUnitFormView}
         >
           <WorkUnitForm />
       </OverlayLayout>}

@@ -60,7 +60,7 @@ input[type="number"] {
   }
 
   .input-container input, .input{
-    @apply flex-1 text-sm bg-white dark:bg-secondary-bg-dark focus:outline-none px-2 py-1 border-b-[1.5px] border-b-black dark:border-b-gray-400 focus:border-b-sky-500 border rounded
+    @apply text-sm bg-white dark:bg-secondary-bg-dark focus:outline-none px-2 py-1 border-b-[1.5px] border-b-black dark:border-b-gray-400 focus:border-b-sky-500 border rounded
   }
 
   .input-container{
