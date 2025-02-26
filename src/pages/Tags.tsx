@@ -12,6 +12,10 @@ const Tags = () => {
   const [sort, setSort] = useState("ASC");
 
   useEffect(()=>{
+    toggleTagFormView(false);
+  }, [])
+
+  useEffect(()=>{
     Database.load("sqlite:app.db").then(
       (db)=>{
         db.select(`SELECT * FROM tags ORDER BY tags.name ${sort};`).then(data=>{
@@ -50,7 +54,7 @@ const Tags = () => {
           type="text"/>
 
         <button
-          onClick={()=>toggleTagFormView()}
+          onClick={()=>toggleTagFormView(true)}
           className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Tag

@@ -4,7 +4,7 @@ import useTag from "../../store/tagsStore"
 import { Link } from "react-router-dom";
 import useWorkUnit from "../../store/workUnitStore";
 
-const AddTagsButton = () => {
+const TagsDropDown = () => {
   
   const {tags} = useTag();
   const {selectTag, toggleWorkUnitFormView} = useWorkUnit();
@@ -87,4 +87,4 @@ const AddTagsButton = () => {
   )
 }
 
-export default AddTagsButton;
+export default TagsDropDown;

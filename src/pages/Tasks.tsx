@@ -50,7 +50,7 @@ const Tasks = () => {
           type="text"/>
 
         <button
-          onClick={()=>toggleTaskFormView()}
+          onClick={()=>toggleTaskFormView(true)}
           className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Task

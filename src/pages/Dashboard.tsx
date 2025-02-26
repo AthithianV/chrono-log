@@ -30,7 +30,7 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {<OverlayLayout
+      <OverlayLayout
         view={workUnitFormView}
         openAnimation="overlay-form-show"
         closeAnimation="overlay-form-hide"
@@ -39,7 +39,7 @@ const Dashboard = () => {
         handleClose={toggleWorkUnitFormView}
         >
           <WorkUnitForm />
-      </OverlayLayout>}
+      </OverlayLayout>
       
     </div>
   )

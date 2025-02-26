@@ -1,4 +1,4 @@
-import { faBars, faCalendar, faChartPie, faChevronDown, faChevronUp, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCalendar, faChartPie, faChevronDown, faChevronUp, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faTrash, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* General */
@@ -30,6 +30,7 @@ export const DownArrowIcon = <FontAwesomeIcon icon={faChevronDown}/>;
 /* Dashboard */
 export const FilterIcon = <FontAwesomeIcon icon={faFilter}/>;
 export const SaveIcon = <FontAwesomeIcon icon={faSave}/>;
+export const DeleteIcon = <FontAwesomeIcon icon={faTrash}/>;
 
 /* Title Bar */
 export const MaximizeIcon = <FontAwesomeIcon icon={faWindowMaximize}/>;

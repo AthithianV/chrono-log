@@ -11,7 +11,7 @@ type Action = {
     addTag: (tag:Tag)=>void,
     setTags: (Tags: Tag[]) => void,
     updateTag: (tag: Tag)=>void,
-    toggleTagFormView: ()=>void,
+    toggleTagFormView: (view:boolean)=>void,
     selectTag: (tag:Tag)=>void,
 }
 
@@ -33,7 +33,7 @@ const useTag = create<State & Action>((set)=>({
         state.tags.push(tag);
         return {tags: state.tags};
     }),
-    toggleTagFormView: ()=>set((state)=>({tagFormView: !state.tagFormView, tag: null}))
+    toggleTagFormView: (view)=>set(()=>({tagFormView: view, tag: null}))
 }));
 
 export default useTag;
