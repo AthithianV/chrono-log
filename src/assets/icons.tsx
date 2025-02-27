@@ -1,4 +1,4 @@
-import { faBars, faCalendar, faChartPie, faChevronDown, faChevronUp, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faTrash, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCalendar, faChartPie, faCheck, faChevronDown, faChevronUp, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faTrash, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* General */
@@ -6,6 +6,8 @@ export const AddIcon = <FontAwesomeIcon icon={faPlus}/>
 export const SortIcon = <FontAwesomeIcon icon={faSort}/>
 export const CloseIcon = <FontAwesomeIcon icon={faXmark}/>
 export const CalenderIcon = <FontAwesomeIcon icon={faCalendar}/>
+export const TickIcon = <FontAwesomeIcon icon={faCheck}/>
+
 
 /*Navbar Icons*/
 export const DashBoardIcon = <FontAwesomeIcon icon={faHouse}/>;

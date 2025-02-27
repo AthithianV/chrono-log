@@ -6,16 +6,14 @@ import { z } from 'zod';
 import InputContainer from '../form/InputContainer';
 import useTag from '../../store/tagsStore';
 import { TagSchema } from '../../validation/schemas';
-import { useEffect, useState } from 'react';
-import { HexColorPicker } from 'react-colorful';
 import { addTagRepository, updateTagRepository } from '../../repository.ts/tags.repository';
+import ColorPicker from '../form/ColorPicker';
 
 const TagForm = () => {
 
     const { toggleTagFormView, addTag, tag, updateTag } = useTag();
-    const [color, setColor] = useState("#000000");
 
-    const {register, handleSubmit, getValues, setValue, formState:{errors}} = useForm(
+    const {register, handleSubmit, watch, setValue, formState:{errors}} = useForm(
         {
             defaultValues: {
                 name: tag?tag.name:"",
@@ -26,15 +24,11 @@ const TagForm = () => {
         }
     );
 
-    useEffect(()=>{
-        setValue("color", color);
-    }, [color]);
+    const color = watch("color");
 
-    
-    useEffect(()=>{
-        if(tag)
-            setColor(tag.color);
-    }, []);
+    const setColor = (color:string)=>{
+        setValue("color", color);
+    }
 
     const onSubmit = async (data:z.infer<typeof TagSchema>)=>{
         try {
@@ -81,15 +75,10 @@ const TagForm = () => {
                 </InputContainer>
                     
                 <InputContainer title={'Color'} error={errors.color?.message}>
-                     {/* <input 
-                        type='text' 
-                        className='input' 
-                        {...register("color")}    
-                        /> */}
-                        <HexColorPicker color={getValues("color") || "#000000"} onChange={setColor} />
+                    <ColorPicker color={color} setColor={setColor}/>                  
                 </InputContainer>
 
-                <button className='btn'>
+                <button className='btn my-4'>
                     {tag?"Update":"Create"}
                 </button>
 

@@ -17,7 +17,11 @@ type Action = {
 
 const useTag = create<State & Action>((set)=>({
     tags: [
-        {name: "Frontend", details:"", color: "#00ee00", id: 1}
+        {name: "Frontend", details:"", color: "#00f", id: 1},
+        {name: "Backend", details:"", color: "#0f0", id: 2},
+        {name: "DSA", details:"", color: "#f00", id: 3},
+        {name: "Rust", details:"", color: "#f0f", id: 4},
+        {name: "Study", details:"", color: "#0ff", id: 5},
     ],
     tagFormView: false,
     tag: null,
