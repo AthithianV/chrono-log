@@ -36,7 +36,7 @@ const OverlayLayout = ({
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-    if (isClose) {
+    if (isClose && handleClose) {
       timer = setTimeout(() => {
         setShow(false);
         handleClose(false);

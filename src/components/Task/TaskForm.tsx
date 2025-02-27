@@ -1,4 +1,3 @@
-import Database from '@tauri-apps/plugin-sql';
 import { error } from '@tauri-apps/plugin-log';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,6 +10,7 @@ import InputContainer from '../form/InputContainer';
 import { TaskSchema } from '../../validation/schemas';
 import TaskOption from './TaskOption';
 import { HexColorPicker } from 'react-colorful';
+import { addTaskRepository, updateTaskRepository } from '../../repository.ts/task.repository';
 
 const TaskForm = () => {
 
@@ -35,23 +35,22 @@ const TaskForm = () => {
         setValue("color", color);
     }, [color]);
 
+    useEffect(()=>{
+        if(task){
+            setColor(task.color);
+        }
+    },[]);
+
     const onSubmit = async (data:z.infer<typeof TaskSchema>)=>{
         try {
-            const db = await Database.load('sqlite:app.db');
             if(task){
-                await db.execute(
-                    "UPDATE tasks SET name=$1, details=$2, hourly_rate=$3, lump_sum=$4, color=$5 WHERE id = $6",
-                    [data.name, data.details, data.hourly_rate, data.lump_sum, data.color, task.id]
-                )
-                updateTask({...data, id:task.id} as Task);
+                updateTaskRepository({id: task.id, ...data});
+                updateTask({...data, id:task.id});
             }else{
-                const result = await db.execute(
-                    "INSERT INTO tasks (name, details, hourly_rate, lump_sum, color) VALUES ($1, $2, $3, $4, $5)",
-                    [data.name, data.details, data.hourly_rate, data.lump_sum, data.color]
-                );
-                addTask({...data, id: result.lastInsertId} as Task);
+                const id = await addTaskRepository(data);
+                if(id)
+                    addTask({...data, id});
             }
-            db.close();
             toggleTaskFormView(false);          
         } catch (err) {
             error("Error Occured: "+ JSON.stringify(err));

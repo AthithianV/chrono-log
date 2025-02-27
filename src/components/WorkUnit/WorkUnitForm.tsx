@@ -3,26 +3,23 @@ import { z } from "zod";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { error } from "@tauri-apps/plugin-log";
 
 import { WorkUnitSchema } from "../../validation/schemas";
 import InputContainer from "../form/InputContainer";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";
 import TaskDropDown from "./TaskDropDown";
-import { error } from "@tauri-apps/plugin-log";
 import { getToday } from "../../utils/dateTime";
-import TagItem from "../Tag/TagItem";
 import useTask from "../../store/taskStore";
 import SubmitButton from "../form/SubmitButton";
 import { CloseIcon, DeleteIcon, SaveIcon } from "../../assets/icons";
 import Button from "../form/Button";
-import AddTagsButton from "./TagsDropDown";
-import { useEffect } from "react";
 import TagsDropDown from "./TagsDropDown";
 
 const WorkUnitForm = () => {
   
-  const {selectedTags, selectedUnit, removeTag, addWorkUnit, toggleWorkUnitFormView} = useWorkUnit();
+  const {selectedUnit, addWorkUnit, toggleWorkUnitFormView} = useWorkUnit();
   const {tasks} = useTask();
   const {register, getValues, setValue, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(WorkUnitSchema),
@@ -36,23 +33,17 @@ const WorkUnitForm = () => {
     }
   });
 
-  useEffect(()=>{
-    console.log(selectedUnit);
-    
-  }, [])
-
   const resetForm = ()=>{
     reset();
     setValue("date", getToday());
   }
 
   const onSubmit = async (data:z.infer<typeof WorkUnitSchema>)=>{
-    console.log({data, tags: selectedTags});
+    console.log({data});
     try {
-        const tagIds = selectedTags.map(tag=>tag.id);
         const task = tasks.find(t=>t.id===data.task);
         if(task){
-            addWorkUnit({...data, task, tags: selectedTags, id: 1});
+            // addWorkUnit({...data, task, id: 1});
         }
     } catch (err) {
         error(JSON.stringify(err));
@@ -97,9 +88,9 @@ const WorkUnitForm = () => {
         </InputContainer>
 
         
-        {/* <InputContainer title={"Task"} error={errors.task?.message}>
-            <TagsDropDown setValue={setValue} selectedUnitTask={selectedUnit?selectedUnit.task:null}/>
-        </InputContainer> */}
+        <InputContainer title={"Tags"} error={errors.task?.message}>
+            <TagsDropDown/>
+        </InputContainer>
 
         <InputContainer title={"Date"} error={errors.date?.message}>
             {/* <input 
@@ -144,20 +135,6 @@ const WorkUnitForm = () => {
             title={"Duration"}
             value={getValues("duration")}
         />
-
-        <ul className="flex gap-1 flex-wrap max-h-[75px] overflow-auto p-1">
-            {                
-                (selectedUnit?selectedUnit.tags:selectedTags).map((tag, index)=>(
-                    <li 
-                      key={index}
-                      className="m-[0.5px]"
-                      onClick={()=>removeTag(tag.id)}
-                    >
-                        <TagItem name={tag.name} color={tag.color}/>
-                    </li>
-                ))
-            }
-        </ul>
 
     </form>
   )

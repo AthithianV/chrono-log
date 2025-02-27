@@ -7,7 +7,6 @@ type State = {
         units: WorkUnit[]
     }[],
     selectedUnit: WorkUnit | null,    
-    selectedTags: Tag[],
     workUnitFormView: boolean,
 }
 
@@ -17,8 +16,6 @@ type Action = {
         units: WorkUnit[]
     }[])=>void,
     selectUnit: (unit:WorkUnit|null)=>void,
-    selectTag: (tag:Tag)=>void,
-    removeTag: (tagId:number)=>void,
     addWorkUnit: (workUnit:WorkUnit)=>void,
     updateWorkUnit: (workUnit:WorkUnit)=>void,
     toggleWorkUnitFormView: (view:boolean)=>void,
@@ -34,7 +31,7 @@ const useWorkUnit = create<State & Action>((set)=>({
             date: new Date(),
             start_time: new Date(2025, 1, 21, 11, 30, 0),
             end_time: new Date(2025, 1, 21, 13, 10, 0),
-            duration: 0,
+            duration: 3600,
             task: {
                 id: 1,
                 name: "Development",
@@ -80,7 +77,6 @@ const useWorkUnit = create<State & Action>((set)=>({
         }]
     }],
     workUnitFormView: false,
-    selectedTags: [],
     selectedUnit: null,
 
     setWorkUnits: (workUnits)=>set(()=>{
@@ -105,17 +101,7 @@ const useWorkUnit = create<State & Action>((set)=>({
         }
         return {};
     }),
-    toggleWorkUnitFormView: (view)=>set(()=>({workUnitFormView : view})),
-    selectTag: (tag)=>set((state)=>{
-        if(state.selectedTags.includes(tag)){
-            return {};
-        }
-        state.selectedTags.push(tag);
-        return { selectedTags: state.selectedTags };
-    }),
-    removeTag: (tagId)=>set((state)=>{
-        return {selectedTags: state.selectedTags.filter(tag=>tag.id!==tagId)}
-    })
+    toggleWorkUnitFormView: (view)=>set(()=>({workUnitFormView : view}))
 }));
 
 export default useWorkUnit;
