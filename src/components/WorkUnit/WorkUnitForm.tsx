@@ -30,6 +30,7 @@ const WorkUnitForm = () => {
         start_time: selectedUnit?selectedUnit.start_time:undefined,
         end_time: selectedUnit?selectedUnit.end_time:null,
         task: selectedUnit?selectedUnit.task.id:undefined,
+        duration:selectedUnit?selectedUnit.duration:undefined
     }
   });
 

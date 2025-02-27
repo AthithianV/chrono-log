@@ -31,7 +31,7 @@ const useWorkUnit = create<State & Action>((set)=>({
             date: new Date(),
             start_time: new Date(2025, 1, 21, 11, 30, 0),
             end_time: new Date(2025, 1, 21, 13, 10, 0),
-            duration: 3600,
+            duration: 3661,
             task: {
                 id: 1,
                 name: "Development",

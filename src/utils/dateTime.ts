@@ -2,13 +2,24 @@ export const appendZero = (time:number):string=>{
     return `${time<10?"0":""}${time}`;
 }
 
-export const timeFormat = (time:number):string=>{
-    const hours = time/3600;
-    const minutes = time/60;
-    const seconds = time%60;
-
-    return `${hours<10?"0":""}${hours}:${minutes<10?"0":""}${minutes}:${seconds<10?"0":""}${seconds}`;
+export const secToHours = (time:number):string => {
+    return Math.floor(time / 3600).toString().padStart(2, "0");
 }
+
+export const secToMinutes = (time:number):string => {
+    return Math.floor(time / 60).toString().padStart(2, "0");
+}
+
+export const timeFormat = (time: number): string => {
+    if (time < 0) return "00:00:00";
+
+    const hours = secToHours(time);
+    const minutes = secToMinutes(time%3600);
+    const seconds = (time % 60).toString().padStart(2, "0");
+
+    return `${hours}:${minutes}:${seconds}`;
+};
+
 
 export const ignoreTime = (date:Date) => {
     return date.toISOString().split("T")[0];
