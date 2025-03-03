@@ -12,15 +12,22 @@ type PropType = {
       start_time: Date; 
       end_time: Date | null; 
       duration: number; 
-    }>
+    }>,
+  selectedUnitTask: Task|null
 }
 
-const TaskDropDown = ({setValue}:PropType) => {
+const TaskDropDown = ({setValue, selectedUnitTask}:PropType) => {
 
   const {tasks} = useTask();
   const [task, setTask] = useState<Task|null>(null);
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef<HTMLUListElement|null>(null);
+
+  useEffect(()=>{
+    if(selectedUnitTask){
+      setTask(selectedUnitTask);
+    }
+  }, []);
 
   useEffect(()=>{
   
@@ -48,16 +55,14 @@ const TaskDropDown = ({setValue}:PropType) => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative font-semibold">
         <div className="input cursor-pointer flex justify-between items-center" onClick={()=>setDropdown(true)}>
           <div>
             {
               task
-              ?<div
-                className="flex items-center gap-2"
-              >
+              ?<div className="flex items-center gap-1">
                 <span 
-                  className="p-[5px] rounded-full border-[1px] border-black"
+                  className="p-2 rounded-full border-[1px] border-black"
                   style={{backgroundColor: task.color?task.color:undefined}}></span>
                 <span>{task.name}</span>
               </div>
@@ -76,7 +81,7 @@ const TaskDropDown = ({setValue}:PropType) => {
               onClick={()=>selectTask(task)}
             >
               <span 
-                className="p-[5px] rounded-full border-[1px] border-black"
+                className="p-2 rounded-full border-[1px] border-black"
                 style={{backgroundColor: task.color?task.color:undefined}}></span>
               <span>{task.name}</span>
             </li>

@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react";
 import { AddIcon, SortIcon } from "../assets/icons"
 import useTask from "../store/taskStore"
-import Database from "@tauri-apps/plugin-sql";
 import { error } from "@tauri-apps/plugin-log";
 import TaskForm from "../components/Task/TaskForm";
 import OverlayLayout from "../components/Layouts/OverlayLayout";
+import { getAllTasksRepository } from "../repository.ts/task.repository";
 
 const Tasks = () => {
 
   const { taskFormView, tasks, toggleTaskFormView, setTasks, selectTask } = useTask();
-  const [sort, setSort] = useState("ASC");
+  const [sort, setSort] = useState<'DESC'|'ASC'>("ASC");
 
   useEffect(()=>{
-    Database.load("sqlite:app.db").then(
-      (db)=>{
-        db.select(`SELECT * FROM tasks ORDER BY tasks.name ${sort};`).then(data=>{
-          setTasks(data as Task[]);
-      });
-        db.close();
-      }
+    getAllTasksRepository(sort).then(
+      (data)=>setTasks(data?data:[])
     ).catch(err=>error("Error Occurred While Fetching Task: "+JSON.stringify(err)));
   }, [sort]);
 
@@ -31,7 +26,8 @@ const Tasks = () => {
           childPositionX="end"
           childPositionY="center"
           openAnimation="overlay-form-show"
-          closeAnimation="overlay-form-hide">
+          closeAnimation="overlay-form-hide"
+          handleClose={toggleTaskFormView}>
           <TaskForm/>
         </OverlayLayout>
 
@@ -45,11 +41,11 @@ const Tasks = () => {
         </button>
 
         <input 
-          className="input px-5"
+          className="input px-5 flex-1"
           type="text"/>
 
         <button
-          onClick={()=>toggleTaskFormView()}
+          onClick={()=>toggleTaskFormView(true)}
           className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Task
@@ -59,8 +55,9 @@ const Tasks = () => {
 
       <ul>
         {
-          tasks.map((task)=>(
+          tasks.map((task, index)=>(
             <li 
+            key={index}
             onClick={()=>selectTask(task)}
             className="tag-task-item">
               <span 

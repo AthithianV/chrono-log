@@ -1,13 +1,64 @@
 import { create } from "zustand";
 
+const test = {
+    id: 1,
+    description: "Tauri",
+    details: "Worked on Chronolog Overlay Feature",
+    date: new Date(),
+    start_time: new Date(2025, 1, 21, 11, 30, 0),
+    end_time: new Date(2025, 1, 21, 13, 10, 0),
+    duration: 3661,
+    task: {
+        id: 1,
+        name: "Development",
+        color: "#0011ff"
+    },
+    tags: [
+        {
+            id: 1,
+            name: "Frontend",
+            color: "#6B7280"
+        },
+        {
+            id: 1,
+            name: "Frontend",
+            color: "#EF4444"
+        },
+        {
+            id: 2,
+            name: "Frontend",
+            color: "#F97316"
+        },
+        {
+            id: 3,
+            name: "Frontend",
+            color: "#F59E0B"
+        },
+        {
+            id: 4,
+            name: "Frontend",
+            color: "#ee0"
+        },
+        {
+            id: 5,
+            name: "Frontend",
+            color: "#0ee"
+        },
+        {
+            id: 6,
+            name: "Frontend",
+            color: "#e0e"
+        }
+    ]
+}
 
 type State = {
     workUnits: {
         date: Date,
         units: WorkUnit[]
     }[],
-    selectedTags: Tag[],
-    workUnitFormView: boolean
+    selectedUnit: WorkUnit | null,    
+    workUnitFormView: boolean,
 }
 
 type Action = {
@@ -15,8 +66,7 @@ type Action = {
         date: Date,
         units: WorkUnit[]
     }[])=>void,
-    selectTag: (tag:Tag)=>void,
-    removeTag: (tagId:number)=>void,
+    selectUnit: (unit:WorkUnit|null)=>void,
     addWorkUnit: (workUnit:WorkUnit)=>void,
     updateWorkUnit: (workUnit:WorkUnit)=>void,
     toggleWorkUnitFormView: (view:boolean)=>void,
@@ -25,34 +75,15 @@ type Action = {
 const useWorkUnit = create<State & Action>((set)=>({
     workUnits: [{
         date: new Date(),
-        units: [{
-            id: 1,
-            description: "Tauri",
-            details: "Worked on Chronolog Overlay Feature",
-            date: new Date(),
-            start_time: new Date(2025, 1, 21, 11, 30, 0),
-            end_time: new Date(2025, 1, 21, 13, 10, 0),
-            duration: 0,
-            task: {
-                id: 1,
-                name: "Development",
-                color: "#0011ff"
-            },
-            tags: [
-                {
-                    id: 1,
-                    name: "Frontend",
-                    color: "#00ee00"
-                }
-            ]
-        }]
+        units: [test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test ]
     }],
     workUnitFormView: false,
-    selectedTags: [],
+    selectedUnit: null,
 
     setWorkUnits: (workUnits)=>set(()=>{
         return {workUnits}
     }),
+    selectUnit: (workUnit)=>set(()=>({selectedUnit: workUnit, workUnitFormView: true})),
     addWorkUnit: (workUnit)=>set((state)=>{
         const index = state.workUnits.findIndex(unit=>unit.date===workUnit.date);
         if(index==-1){
@@ -71,17 +102,7 @@ const useWorkUnit = create<State & Action>((set)=>({
         }
         return {};
     }),
-    toggleWorkUnitFormView: (view)=>set(()=>({workUnitFormView : view})),
-    selectTag: (tag)=>set((state)=>{
-        if(state.selectedTags.includes(tag)){
-            return {};
-        }
-        state.selectedTags.push(tag);
-        return { selectedTags: state.selectedTags };
-    }),
-    removeTag: (tagId)=>set((state)=>{
-        return {selectedTags: state.selectedTags.filter(tag=>tag.id!==tagId)}
-    })
+    toggleWorkUnitFormView: (view)=>set(()=>({workUnitFormView : view}))
 }));
 
 export default useWorkUnit;

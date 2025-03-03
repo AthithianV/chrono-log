@@ -1,29 +1,36 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-import { useForm } from "react-hook-form";
-import { WorkUnitSchema } from "../../validation/schemas";
-import InputContainer from "../form/InputContainer";
-import WorkUnitFormControls from "./WorkUnitFormControls";
-import TimeElement from "../form/TimeElement";
-import useWorkUnit from "../../store/workUnitStore";
-import { TagIcon } from "../../assets/icons";
-import TaskDropDown from "./TaskDropDown";
-import { error } from "@tauri-apps/plugin-log";
-import { getToday } from "../../utils/dateTime";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TagItem from "../Tag/TagItem";
+import { useForm } from "react-hook-form";
+import { error } from "@tauri-apps/plugin-log";
+
+import { WorkUnitSchema } from "../../validation/schemas";
+import InputContainer from "../form/InputContainer";
+import TimeElement from "../form/TimeElement";
+import useWorkUnit from "../../store/workUnitStore";
+import TaskDropDown from "./TaskDropDown";
+import { getToday } from "../../utils/dateTime";
 import useTask from "../../store/taskStore";
+import SubmitButton from "../form/SubmitButton";
+import { CloseIcon, DeleteIcon, SaveIcon } from "../../assets/icons";
+import Button from "../form/Button";
+import TagsDropDown from "./TagsDropDown";
 
 const WorkUnitForm = () => {
   
-  const {selectedTags, removeTag, addWorkUnit} = useWorkUnit();
+  const {selectedUnit, addWorkUnit, toggleWorkUnitFormView} = useWorkUnit();
   const {tasks} = useTask();
   const {register, getValues, setValue, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(WorkUnitSchema),
     defaultValues: {
-        date: getToday()
+        description: selectedUnit?selectedUnit.description:null,
+        details: selectedUnit?selectedUnit.details:null,
+        date: selectedUnit?selectedUnit.date:getToday(),
+        start_time: selectedUnit?selectedUnit.start_time:undefined,
+        end_time: selectedUnit?selectedUnit.end_time:null,
+        task: selectedUnit?selectedUnit.task.id:undefined,
+        duration:selectedUnit?selectedUnit.duration:undefined
     }
   });
 
@@ -32,18 +39,18 @@ const WorkUnitForm = () => {
     setValue("date", getToday());
   }
 
-  const onSubmit = (data:z.infer<typeof WorkUnitSchema>)=>{
-    console.log({data, tags: selectedTags});
+  const onSubmit = async (data:z.infer<typeof WorkUnitSchema>)=>{
+    console.log({data});
     try {
-        const tags = selectedTags.map(tag=>tag.id);
         const task = tasks.find(t=>t.id===data.task);
         if(task){
-            addWorkUnit({...data, task, tags: selectedTags, id: 1});
+            // addWorkUnit({...data, task, id: 1});
         }
     } catch (err) {
         error(JSON.stringify(err));
     }finally{
         resetForm();
+        toggleWorkUnitFormView(false);
     }
   }
 
@@ -54,18 +61,36 @@ const WorkUnitForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className={`overlay-form`}>
 
-        <WorkUnitFormControls/>
-        
+        <div className="flex items-center justify-between gap-4 text-lg">
+
+            <button type="button" onClick={()=>toggleWorkUnitFormView(false)}>
+                <span className="text-red-400">{CloseIcon}</span>
+            </button>
+
+            <div className="flex-center gap-2">
+                {selectedUnit && <div>
+                    <Button name={"Delete"} icon={DeleteIcon}/>
+                </div>}
+                <SubmitButton name={"Save"} icon={SaveIcon}/>
+            </div>
+        </div>
+
+
         <InputContainer title={"Description"} error={errors.description?.message}>
             <input className="input" type="text" {...register("description")}/>
         </InputContainer>   
 
         <InputContainer title={"Details"} error={errors.description?.message}>
-            <textarea className="input h-[100px]" {...register("details")}></textarea>
+            <textarea className="h-[90px] py-1 px-2 input" {...register("details")}></textarea>
         </InputContainer>    
 
         <InputContainer title={"Task"} error={errors.task?.message}>
-            <TaskDropDown setValue={setValue}/>
+            <TaskDropDown setValue={setValue} selectedUnitTask={selectedUnit?selectedUnit.task:null}/>
+        </InputContainer>
+
+        
+        <InputContainer title={"Tags"} error={errors.task?.message}>
+            <TagsDropDown/>
         </InputContainer>
 
         <InputContainer title={"Date"} error={errors.date?.message}>
@@ -111,21 +136,6 @@ const WorkUnitForm = () => {
             title={"Duration"}
             value={getValues("duration")}
         />
-
-        <div className="flex flex-wrap max-h-[100px] overflow-auto p-1">
-            {
-                selectedTags.map((tag, index)=>(
-                    <li 
-                      key={index}
-                      className="m-[0.5px]"
-                      style={{backgroundColor: tag.color?tag.color:undefined}}
-                      onClick={()=>removeTag(tag.id)}
-                    >
-                        <TagItem name={tag.name} color={tag.color}/>
-                    </li>
-                ))
-            }
-        </div>
 
     </form>
   )

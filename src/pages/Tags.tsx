@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
 import { AddIcon, SortIcon } from "../assets/icons"
-import Database from "@tauri-apps/plugin-sql";
-import { error } from "@tauri-apps/plugin-log";
 import useTag from "../store/tagsStore";
 import TagForm from "../components/Tag/TagForm";
 import OverlayLayout from "../components/Layouts/OverlayLayout";
+import { getAllTagsRepository } from "../repository.ts/tags.repository";
 
 const Tags = () => {
 
   const { tagFormView, tags, toggleTagFormView, setTags, selectTag } = useTag();
-  const [sort, setSort] = useState("ASC");
+  const [sort, setSort] = useState<"ASC"|"DESC">("ASC");
 
   useEffect(()=>{
-    Database.load("sqlite:app.db").then(
-      (db)=>{
-        db.select(`SELECT * FROM tags ORDER BY tags.name ${sort};`).then(data=>{
-          setTags(data as Tag[]);
-      });
-        db.close();
-      }
-    ).catch(err=>error("Error Occurred While Fetching Tags: "+JSON.stringify(err)));
+    toggleTagFormView(false);
+  }, [])
+
+  useEffect(()=>{
+    getAllTagsRepository(sort)
+    .then(data=>setTags(data?data:[]))
+    .catch(err=>console.log(err))
   }, [sort]);
 
   return (
@@ -31,7 +29,8 @@ const Tags = () => {
           childPositionX="end"
           childPositionY="center"
           openAnimation="overlay-form-show"
-          closeAnimation="overlay-form-hide">
+          closeAnimation="overlay-form-hide"
+          handleClose={toggleTagFormView}>
           <TagForm/>
         </OverlayLayout>
         
@@ -45,11 +44,11 @@ const Tags = () => {
         </button>
 
         <input 
-          className="input px-5"
+          className="input px-5 flex-1"
           type="text"/>
 
         <button
-          onClick={()=>toggleTagFormView()}
+          onClick={()=>toggleTagFormView(true)}
           className="btn max-sm:fixed max-sm:bottom-5 max-sm:right-5">
             {AddIcon}
             Create New Tag
@@ -57,20 +56,21 @@ const Tags = () => {
 
       </div>
 
-      <ul>
-        {
-          tags.map((tag)=>(
-            <li 
-            onClick={()=>selectTag(tag)}
-            className="tag-task-item">
-              <span 
-                style={{ backgroundColor: tag.color?tag.color:undefined }}
-                className={`border-[1px] border-black h-[20px] w-[20px] rounded-full`}></span>
-              <span>{tag.name}</span>
-            </li>
-          ))
-        }
-      </ul>
+        <ul>
+          {
+            tags.map((tag, index)=>(
+              <li 
+              key={index}
+              onClick={()=>selectTag(tag)}
+              className="tag-task-item">
+                <span 
+                  style={{ backgroundColor: tag.color?tag.color:undefined }}
+                  className={`border-[1px] border-black h-[20px] w-[20px] rounded-full`}></span>
+                <span>{tag.name}</span>
+              </li>
+            ))
+          }
+        </ul>
     </div>
   )
 }

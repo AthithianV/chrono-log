@@ -11,7 +11,7 @@ type Action = {
     addTask: (task:Task)=>void,
     setTasks: (tasks: Task[]) => void,
     updateTask: (task: Task)=>void,
-    toggleTaskFormView: ()=>void,
+    toggleTaskFormView: (view:boolean)=>void,
     selectTask: (task:Task)=>void,
 }
 
@@ -33,7 +33,7 @@ const useTask = create<State & Action>((set)=>({
         state.tasks.push(task)
         return {tasks: state.tasks};
     }),
-    toggleTaskFormView: ()=>set((state)=>({taskFormView: !state.taskFormView, task: null}))
+    toggleTaskFormView: (view)=>set(()=>({taskFormView: view, task: null}))
 }));
 
 export default useTask;

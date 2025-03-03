@@ -3,14 +3,17 @@ import useWorkUnit from "../../store/workUnitStore";
 
 const DashboardControls = () => {
 
-    const { toggleWorkUnitFormView } = useWorkUnit();
+    const { toggleWorkUnitFormView, selectUnit } = useWorkUnit();
 
   return (
     <div className=" border-b-2">
         <div className="my-2">
             <button 
                 className="btn bg-white" 
-                onClick={()=>toggleWorkUnitFormView(true)}>
+                onClick={()=>{
+                    toggleWorkUnitFormView(true);
+                    selectUnit(null);
+                }}>
             {AddIcon}
             <span>Add Work Unit</span>
             </button>

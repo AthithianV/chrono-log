@@ -7,6 +7,7 @@
 :root{
   --title-bar-height: 6vh;
   --body-height: 94vh;
+  --primary-color: "#FD4760";
 }
 
 .logo-font {
@@ -59,7 +60,7 @@ input[type="number"] {
   }
 
   .input-container input, .input{
-    @apply flex-1 text-sm bg-white dark:bg-secondary-bg-dark focus:outline-none px-2 py-1 border-b-[1.5px] border-b-black dark:border-b-gray-400 focus:border-b-sky-500 border rounded
+    @apply text-sm bg-white dark:bg-secondary-bg-dark focus:outline-none px-2 py-1 border-b-[1.5px] border-b-black dark:border-b-gray-400 focus:border-b-sky-500 border rounded
   }
 
   .input-container{
@@ -71,7 +72,7 @@ input[type="number"] {
   }
 
   .overlay-form{
-    @apply bg-secondary-bg-light dark:bg-primary-bg-dark py-5 px-10 w-[400px] max-sm:min-w-[350px] max-sm:w-screen h-full
+    @apply bg-secondary-bg-light dark:bg-primary-bg-dark py-5 px-10 w-[400px] max-sm:min-w-[350px] max-sm:w-screen h-full overflow-auto
   }
 
   .tag-task-item{
@@ -83,7 +84,11 @@ input[type="number"] {
   }
 
   .drop-down{
-    @apply absolute text-sm min-w-[200px] z-10 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg overflow-auto
+    @apply absolute text-sm w-full min-w-[200px] z-10 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg drop-down-animation max-h-[200px] overflow-y-auto
+  }
+
+  .drop-down-element {
+    @apply flex items-center gap-2 p-2 cursor-pointer border-b border-gray-200 hover:bg-slate-200 transition rounded
   }
 
   .background{

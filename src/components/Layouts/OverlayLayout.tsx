@@ -8,47 +8,47 @@ type PropType = {
   isSidebar?: boolean;
   childPositionX: "start" | "end" | "center";
   childPositionY: "end" | "center" | "start";
+  handleClose: (view: boolean) => void;
 };
 
 const OverlayLayout = ({
   children,
   view,
-  openAnimation,
-  closeAnimation,
+  openAnimation = "fadeIn",
+  closeAnimation = "fadeOut",
   isSidebar,
   childPositionX,
-  childPositionY
+  childPositionY,
+  handleClose,
 }: PropType) => {
-
   const [show, setShow] = useState(false);
   const [isClose, setIsClose] = useState(false);
   const innerRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     if (view) {
-      setIsClose(false);
       setShow(true);
-    }else{
+      setIsClose(false);
+    } else {
       setIsClose(true);
     }
   }, [view]);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-    if (isClose) {
+    if (isClose && handleClose) {
       timer = setTimeout(() => {
-        setIsClose(false);
         setShow(false);
+        handleClose(false);
       }, 300);
     }
     return () => clearTimeout(timer);
   }, [isClose]);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-
     const isOutsideClick =
       innerRef.current && !innerRef.current.contains(e.target as Node);
-    
+
     const isSidebarClick =
       isSidebar &&
       (e.target instanceof HTMLLIElement ||
@@ -63,7 +63,10 @@ const OverlayLayout = ({
   if (!show) return null;
 
   return (
-    <div className={`overlay flex items-${childPositionY} justify-${childPositionX}`} onClick={handleClick}>
+    <div
+      className={`overlay flex items-${childPositionY} justify-${childPositionX}`}
+      onClick={handleClick}
+    >
       <div
         ref={innerRef}
         className={`${isClose ? closeAnimation : openAnimation} h-full w-fit`}

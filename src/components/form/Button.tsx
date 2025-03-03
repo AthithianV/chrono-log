@@ -1,6 +1,11 @@
 import { ReactNode } from 'react'
 
-const Button = ({name, icon}:{name: string, icon:ReactNode}) => {
+type PropTye = {
+  name: string,
+  icon:ReactNode,
+}
+
+const Button = ({name, icon}:PropTye) => {
   return (
     <button type="button" className="btn">
         {icon}
