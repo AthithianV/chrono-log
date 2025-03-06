@@ -4,7 +4,7 @@ import useTag from "../../store/tagsStore";
 import { Link } from "react-router-dom";
 import useWorkUnit from "../../store/workUnitStore";
 import TagItem from "../Tag/TagItem";
-import { getAllTagsRepository } from "../../repository.ts/tags.repository";
+import { getAllTagsRepository } from "../../repository/tags.repository";
 
 const TagsDropDown = () => {
 

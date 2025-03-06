@@ -4,7 +4,7 @@ import useTask from "../store/taskStore"
 import { error } from "@tauri-apps/plugin-log";
 import TaskForm from "../components/Task/TaskForm";
 import OverlayLayout from "../components/Layouts/OverlayLayout";
-import { getAllTasksRepository } from "../repository.ts/task.repository";
+import { getAllTasksRepository } from "../repository/task.repository";
 
 const Tasks = () => {
 

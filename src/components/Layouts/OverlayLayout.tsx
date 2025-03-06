@@ -64,7 +64,7 @@ const OverlayLayout = ({
 
   return (
     <div
-      className={`overlay flex items-${childPositionY} justify-${childPositionX}`}
+      className={`overlay ${isClose?"fade-out":"fade-in"} flex items-${childPositionY} justify-${childPositionX}`}
       onClick={handleClick}
     >
       <div

@@ -10,7 +10,7 @@ import InputContainer from '../form/InputContainer';
 import { TaskSchema } from '../../validation/schemas';
 import TaskOption from './TaskOption';
 import { HexColorPicker } from 'react-colorful';
-import { addTaskRepository, updateTaskRepository } from '../../repository.ts/task.repository';
+import { addTaskRepository, updateTaskRepository } from '../../repository/task.repository';
 
 const TaskForm = () => {
 

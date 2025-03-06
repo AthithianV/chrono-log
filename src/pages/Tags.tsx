@@ -3,7 +3,7 @@ import { AddIcon, SortIcon } from "../assets/icons"
 import useTag from "../store/tagsStore";
 import TagForm from "../components/Tag/TagForm";
 import OverlayLayout from "../components/Layouts/OverlayLayout";
-import { getAllTagsRepository } from "../repository.ts/tags.repository";
+import { getAllTagsRepository } from "../repository/tags.repository";
 
 const Tags = () => {
 

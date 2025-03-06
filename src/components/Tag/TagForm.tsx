@@ -8,7 +8,7 @@ import useTag from '../../store/tagsStore';
 import { TagSchema } from '../../validation/schemas';
 import { useEffect, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
-import { addTagRepository, updateTagRepository } from '../../repository.ts/tags.repository';
+import { addTagRepository, updateTagRepository } from '../../repository/tags.repository';
 
 const TagForm = () => {
 
