@@ -84,7 +84,7 @@ input[type="number"] {
   }
 
   .drop-down{
-    @apply absolute text-sm w-full min-w-[200px] z-10 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg drop-down-animation top-8 max-h-[500px] overflow-y-auto
+    @apply absolute text-sm w-full min-w-[200px] z-10 bg-primary-bg-light dark:bg-primary-bg-dark p-2 rounded border shadow-lg drop-down-animation max-h-[200px] overflow-y-auto
   }
 
   .drop-down-element {

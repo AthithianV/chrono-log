@@ -9,11 +9,11 @@ const Dashboard = () => {
   const { workUnitFormView, workUnits, toggleWorkUnitFormView } = useWorkUnit();
 
   return (
-    <div className="slide-up p-4 flex">
-
-      <div className="flex-1">
-        <DashboardControls/>
-        <ul className="py-2">
+      <div className= "slide-up p-4 w-full h-full">
+        <div className="h-[13%]">
+          <DashboardControls/>
+        </div>
+        <ul className="py-2 h-[87%] overflow-auto">
           {
             workUnits.map((date, index)=>(
               <ul key={index}>
@@ -28,8 +28,7 @@ const Dashboard = () => {
             ))
           }
         </ul>
-      </div>
-
+        
       <OverlayLayout
         view={workUnitFormView}
         openAnimation="overlay-form-show"
@@ -40,8 +39,8 @@ const Dashboard = () => {
         >
           <WorkUnitForm />
       </OverlayLayout>
-      
-    </div>
+      </div>
+
   )
 }
 

@@ -2,23 +2,22 @@ import { error } from '@tauri-apps/plugin-log';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { CloseIcon } from '../../assets/icons'
 import useTask from '../../store/taskStore'
 import InputContainer from '../form/InputContainer';
 import { TaskSchema } from '../../validation/schemas';
 import TaskOption from './TaskOption';
-import { HexColorPicker } from 'react-colorful';
-import { addTaskRepository, updateTaskRepository } from '../../repository/task.repository';
+import { addTaskRepository, updateTaskRepository } from '../../repository.ts/task.repository';
+import ColorPicker from '../form/ColorPicker';
 
 const TaskForm = () => {
 
     const { toggleTaskFormView, addTask, task, updateTask } = useTask();
-    const [color, setColor] = useState("#000000");
     const [payForm, setPayForm] = useState<"hourly_rate"|"lump_sum">("hourly_rate");
 
-    const {register, handleSubmit, setValue, getValues, formState:{errors}} = useForm(
+    const {register, handleSubmit, setValue, watch, formState:{errors}} = useForm(
         {
             defaultValues: {
                 name: task?task.name:"",
@@ -31,15 +30,11 @@ const TaskForm = () => {
         }
     );
     
-    useEffect(()=>{
-        setValue("color", color);
-    }, [color]);
+    const color = watch("color");
 
-    useEffect(()=>{
-        if(task){
-            setColor(task.color);
-        }
-    },[]);
+    const setColor = (color:string)=>{
+        setValue("color", color);
+    }
 
     const onSubmit = async (data:z.infer<typeof TaskSchema>)=>{
         try {
@@ -109,12 +104,7 @@ const TaskForm = () => {
                 
                     
                 <InputContainer title={'Color'} error={errors.color?.message}>
-                     {/* <input 
-                        type='text' 
-                        className='input' 
-                        {...register("color")}    
-                        /> */}
-                    <HexColorPicker color={getValues('color') || "#000000"} onChange={setColor}/>
+                     <ColorPicker color={color} setColor={setColor}/>
                 </InputContainer>
 
                 <button className='btn'>

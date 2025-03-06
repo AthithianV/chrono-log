@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { AddIcon } from "../../assets/icons";
+import { AddIcon, CloseIcon } from "../../assets/icons";
 import useTag from "../../store/tagsStore";
 import { Link } from "react-router-dom";
 import useWorkUnit from "../../store/workUnitStore";
-import TagItem from "../Tag/TagItem";
-import { getAllTagsRepository } from "../../repository/tags.repository";
+import { getAllTagsRepository } from "../../repository.ts/tags.repository";
 
 const TagsDropDown = () => {
 
   const { tags, setTags } = useTag();
-  const [selectedTags, pickTags] = useState<Tag[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const { toggleWorkUnitFormView } = useWorkUnit();
   const [dropdown, setDropdown] = useState(false);
 
@@ -35,11 +34,11 @@ const TagsDropDown = () => {
     }
   }, []);
 
-  useEffect(()=>{
-      getAllTagsRepository('DESC')
-      .then(data=>setTags(data?data:[]))
-      .catch(err=>console.log(err))
-  }, []);
+  // useEffect(()=>{
+  //     getAllTagsRepository('DESC')
+  //     .then(data=>setTags(data?data:[]))
+  //     .catch(err=>console.log(err))
+  // }, []);
 
   useEffect(() => {
     if (dropdown) {
@@ -56,8 +55,20 @@ const TagsDropDown = () => {
     };
   }, [dropdown, handleClickOutside, handleKeyDown]);
 
+  const pickTag = (tag:Tag)=>{
+    const exists = selectedTags.find(t=>t.id===tag.id);
+    if(!exists){
+      setSelectedTags([...selectedTags, tag]);
+    }
+  }
+
+  const removeTag = (e: React.MouseEvent<HTMLButtonElement>, tagId: number) => {
+    e.stopPropagation();
+    setSelectedTags(prev=>prev.filter(tag=>tag.id!==tagId));
+  }
+
   return (
-    <div className="relative flex justify-end">
+    <div className="flex justify-end flex-col">
 
       {/* Dropdown Toggle Button */}
       <div ref={btnRef} className="input min-h-8 w-full flex flex-wrap" onClick={() => setDropdown((prev) => !prev)}>
@@ -66,9 +77,11 @@ const TagsDropDown = () => {
                 selectedTags.map((tag, index)=>(
                     <li 
                       key={index}
-                      // onClick={()=>removeTag(tag.id)}
+                      style={{ backgroundColor: tag.color }}
+                      className="flex gap-1 py-[1px] px-2 rounded-lg font-semibold"
                     >
-                        <TagItem name={tag.name} color={tag.color}/>
+                        <span>{tag.name}</span>
+                        <button type="button" onClick={(e)=>removeTag(e, tag.id)}>{CloseIcon}</button>
                     </li>
                 ))
             }
@@ -76,6 +89,7 @@ const TagsDropDown = () => {
       </div>
 
       {/* Dropdown List */}
+      <div className="relative">
       {dropdown && (
         <ul
           ref={dropdownRef}
@@ -86,10 +100,7 @@ const TagsDropDown = () => {
               <li
                 key={tag.id}
                 className="drop-down-element"
-                onClick={() => pickTags(tags=>{
-                  tags.push(tag);
-                  return tags;
-                })}
+                onClick={() => pickTag(tag)}
               >
                 <span
                   className="h-4 w-4 rounded-full border border-black"
@@ -117,6 +128,7 @@ const TagsDropDown = () => {
           </li>
         </ul>
       )}
+      </div>
     </div>
   );
 };
