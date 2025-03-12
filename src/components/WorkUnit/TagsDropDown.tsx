@@ -3,7 +3,7 @@ import { AddIcon, CloseIcon } from "../../assets/icons";
 import useTag from "../../store/tagsStore";
 import { Link } from "react-router-dom";
 import useWorkUnit from "../../store/workUnitStore";
-import { getAllTagsRepository } from "../../repository.ts/tags.repository";
+import { getAllTagsRepository } from "../../repository/tags.repository";
 
 const TagsDropDown = () => {
 
@@ -78,7 +78,7 @@ const TagsDropDown = () => {
                     <li 
                       key={index}
                       style={{ backgroundColor: tag.color }}
-                      className="flex gap-1 py-[1px] px-2 rounded-lg font-semibold"
+                      className="flex gap-1 py-[1px] px-2 rounded font-semibold"
                     >
                         <span>{tag.name}</span>
                         <button type="button" onClick={(e)=>removeTag(e, tag.id)}>{CloseIcon}</button>

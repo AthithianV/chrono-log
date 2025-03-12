@@ -721,6 +721,7 @@ dependencies = [
 name = "chrono-log"
 version = "0.1.0"
 dependencies = [
+ "dotenvy",
  "sea-orm",
  "sea-orm-migration",
  "serde",

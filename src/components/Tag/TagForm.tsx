@@ -6,7 +6,7 @@ import { z } from 'zod';
 import InputContainer from '../form/InputContainer';
 import useTag from '../../store/tagsStore';
 import { TagSchema } from '../../validation/schemas';
-import { addTagRepository, updateTagRepository } from '../../repository.ts/tags.repository';
+import { addTagRepository, updateTagRepository } from '../../repository/tags.repository';
 import ColorPicker from '../form/ColorPicker';
 
 const TagForm = () => {

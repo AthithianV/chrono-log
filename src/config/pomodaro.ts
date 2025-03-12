@@ -14,7 +14,8 @@ const pomodaroConfig = {
     minSessionCount: 1,
 
     autoStart: true,
-    syncWithTimeTracking: true
+    syncWithTimeTracking: true,
+    notificationSound: false
 }
 
 export default pomodaroConfig;
