@@ -1,4 +1,4 @@
-import { faBars, faCalendar, faChartPie, faCheck, faChevronDown, faChevronUp, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faTrash, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCalendar, faChartPie, faCheck, faChevronDown, faChevronUp, faFileExport, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faTrash, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* General */
@@ -19,6 +19,7 @@ export const DarkThemeIcon = <FontAwesomeIcon icon={faMoon}/>;
 export const LightThemeIcon = <FontAwesomeIcon icon={faSun}/>;
 export const SettingsIcon = <FontAwesomeIcon icon={faGear}/>;
 export const ToggleButtonIcon = <FontAwesomeIcon icon={faBars}/>;
+export const ExportIcon = <FontAwesomeIcon icon={faFileExport}/>;
 
 
 /* Pomodaro Icons */

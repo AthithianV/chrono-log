@@ -8,17 +8,17 @@ const MainLayout = () => {
   return (
     <main className='h-screen w-screen flex flex-col'>
         <TitleBar/>
-        <div className='flex flex-1 max-sm:flex-col relative bg-gray-100 dark:bg-primary-bg-dark dark:text-slate-300'>
+        
+        <div className="h-[89vh]">
           <div className="bg-secondary-bg-light dark:bg-secondary-bg-dark block">
               <div className='h-full block max-sm:hidden'>
                 <SideNavbar/>
               </div>
               <OverlaySideNavbar/>
           </div>
-          <div className="h-[94vh] flex-1">
-            <div className='relative rounded-lg h-full'>
-              <Outlet/>
-            </div>
+            
+          <div className='relative rounded-lg h-full'>
+            <Outlet/>
           </div>
         </div>
     </main>

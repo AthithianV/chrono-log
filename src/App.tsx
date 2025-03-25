@@ -11,6 +11,7 @@ import Analytics from "./pages/Analytics";
 import Pomodaro from "./pages/Pomodaro";
 import Settings from "./pages/Settings";
 import useTheme from "./store/themeStore";
+import Export from "./pages/Export";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="tasks" element={<Tasks/>}/>
           <Route path="tags" element={<Tags/>}/>
           <Route path="analytics" element={<Analytics/>}/>
+          <Route path="export" element={<Export/>}/>
           <Route path="pomodaro" element={<Pomodaro/>}/>
           <Route path="settings" element={<Settings/>}/>
           <Route path="*" element={<h1>Page Not Found</h1>}/>

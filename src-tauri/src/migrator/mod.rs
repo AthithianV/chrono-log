@@ -1,12 +1,12 @@
 use sea_orm_migration::prelude::*;
 
-mod m_20250312_000001_create_personalization_table;
-mod m_20250312_000001_create_pomodaro_table;
-mod m_20250312_000001_create_tag_table;
-mod m_20250312_000001_create_task_table;
-mod m_20250312_000001_create_task_tag_table;
-mod m_20250312_000001_create_workunit_table;
-mod m_20250312_000001_create_workunit_tag_table;
+pub mod m_20250312_000001_create_personalization_table;
+pub mod m_20250312_000001_create_pomodaro_table;
+pub mod m_20250312_000001_create_tag_table;
+pub mod m_20250312_000001_create_task_table;
+pub mod m_20250312_000001_create_task_tag_table;
+pub mod m_20250312_000001_create_workunit_table;
+pub mod m_20250312_000001_create_workunit_tag_table;
 
 pub struct Migrator;
 

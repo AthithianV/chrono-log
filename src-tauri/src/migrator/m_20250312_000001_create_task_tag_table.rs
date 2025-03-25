@@ -17,25 +17,21 @@ impl MigrationTrait for Migration {
         manager
             .create_table(
                 Table::create()
-                    .table(WorkunitTag::Table)
-                    .col(ColumnDef::new(WorkunitTag::TaskId).integer().not_null())
-                    .col(ColumnDef::new(WorkunitTag::TagId).integer().not_null())
-                    .primary_key(
-                        Index::create()
-                            .col(WorkunitTag::TaskId)
-                            .col(WorkunitTag::TagId),
-                    )
+                    .table(TaskTag::Table)
+                    .col(ColumnDef::new(TaskTag::TaskId).integer().not_null())
+                    .col(ColumnDef::new(TaskTag::TagId).integer().not_null())
+                    .primary_key(Index::create().col(TaskTag::TaskId).col(TaskTag::TagId))
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-workunit_tag-workunit")
-                            .from(WorkunitTag::Table, WorkunitTag::TaskId)
+                            .from(TaskTag::Table, TaskTag::TaskId)
                             .to(Task::Table, Task::Id)
                             .on_delete(ForeignKeyAction::Cascade),
                     )
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-workunit_tag-tag")
-                            .from(WorkunitTag::Table, WorkunitTag::TagId)
+                            .from(TaskTag::Table, TaskTag::TagId)
                             .to(Tag::Table, Tag::Id)
                             .on_delete(ForeignKeyAction::Cascade),
                     )
@@ -44,16 +40,16 @@ impl MigrationTrait for Migration {
             .await
     }
 
-    // Define how to rollback this migration: Drop the WorkunitTag table.
+    // Define how to rollback this migration: Drop the TaskTag table.
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         manager
-            .drop_table(Table::drop().table(WorkunitTag::Table).to_owned())
+            .drop_table(Table::drop().table(TaskTag::Table).to_owned())
             .await
     }
 }
 
 #[derive(Iden)]
-pub enum WorkunitTag {
+pub enum TaskTag {
     Table,
     TaskId,
     TagId,

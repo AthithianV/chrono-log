@@ -8,7 +8,7 @@ const TitleBar = () => {
   const appWindow = getCurrentWindow();
 
   return (
-    <div data-tauri-drag-region className="flex justify-between items-center bg-slate-50 dark:bg-secondary-bg-dark h-[5.5vh]">
+    <div data-tauri-drag-region className="flex justify-between items-center bg-slate-50 dark:bg-secondary-bg-dark">
         <Brand/>
         <div className='flex-center '>
             <div className='px-4 py-2 hover:bg-gray-200 cursor-pointer' onClick={()=>appWindow.minimize()}>

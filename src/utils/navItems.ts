@@ -1,4 +1,4 @@
-import { AnalyticsIcon, DashBoardIcon, PomodaroIcon, TagIcon, TaskIcon } from "../assets/icons";
+import { AnalyticsIcon, DashBoardIcon, ExportIcon, PomodaroIcon, TagIcon, TaskIcon } from "../assets/icons";
 
 export const navItems = [
     {
@@ -15,6 +15,11 @@ export const navItems = [
         name: "Tags",
         path: "/tags",
         icon: TagIcon
+    },
+    {
+        name: "Export",
+        path: "/export",
+        icon: ExportIcon
     },
     {
         name: "Analytics",
