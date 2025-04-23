@@ -15,6 +15,7 @@ export default defineConfig(async () => ({
     alias: {
       '@': resolve(__dirname, './src'),
       '@components': resolve(__dirname, './src/components'),
+      '@assets': resolve(__dirname, './src/assets'),
       '@pages': resolve(__dirname, './src/pages'),
       '@utils': resolve(__dirname, './src/utils'),
       '@hooks': resolve(__dirname, './src/hooks'),
