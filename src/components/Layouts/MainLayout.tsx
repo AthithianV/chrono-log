@@ -9,7 +9,7 @@ const MainLayout = () => {
     <main className='h-screen w-screen flex flex-col'>
         <TitleBar/>
         
-        <div className="h-[89vh]">
+        <div className="h-[95vh] flex">
           <div className="bg-secondary-bg-light dark:bg-secondary-bg-dark block">
               <div className='h-full block max-sm:hidden'>
                 <SideNavbar/>
@@ -17,7 +17,7 @@ const MainLayout = () => {
               <OverlaySideNavbar/>
           </div>
             
-          <div className='relative rounded-lg h-full'>
+          <div className='relative rounded-lg h-full w-full overflow-hidden'>
             <Outlet/>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import usePomodaro from "../../store/pomodaroStore";
 import { StartIcon, StopIcon } from "../ui/icons";
-import ProgressBar from "./ProgressBar";
+// import ProgressBar from "./ProgressBar";
 
 
 const Timer = () => {
@@ -20,7 +20,7 @@ const Timer = () => {
 
   return (
     <div className="p-10 w-fit rounded mt-24">
-        <ProgressBar/>
+        {/* <ProgressBar/>   */}
         <div className="flex-center gap-3 my-2 text-2xl text-white">
             {(!running)
             ?<button className="py-2 px-4 rounded bg-green-500" onClick={start}>{StartIcon}</button>
