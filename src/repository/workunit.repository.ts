@@ -2,7 +2,7 @@ import Database from "@tauri-apps/plugin-sql";
 import { error } from "@tauri-apps/plugin-log";
 import { z } from "zod";
 
-import { WorkUnitSchema } from "../validation/schemas";
+import { WorkUnitSchema } from "../utils/forms/schemas";
 
 // export const getAllTasksRepository = async (sort:'ASC'|'DESC'='DESC')=>{
 //     try {

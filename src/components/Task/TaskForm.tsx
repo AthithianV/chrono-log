@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { CloseIcon } from '../../assets/icons'
 import useTask from '../../store/taskStore'
 import InputContainer from '../form/InputContainer';
-import { TaskSchema } from '../../validation/schemas';
+import { TaskSchema } from '../../utils/forms/schemas';
 import TaskOption from './TaskOption';
 import { addTaskRepository, updateTaskRepository } from '../../repository/task.repository';
 import ColorPicker from '../form/ColorPicker';

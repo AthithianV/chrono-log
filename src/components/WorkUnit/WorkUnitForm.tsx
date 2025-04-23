@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { error } from "@tauri-apps/plugin-log";
 
-import { WorkUnitSchema } from "../../validation/schemas";
+import { WorkUnitSchema } from "../../utils/forms/schemas";
 import InputContainer from "../form/InputContainer";
 import TimeElement from "../form/TimeElement";
 import useWorkUnit from "../../store/workUnitStore";

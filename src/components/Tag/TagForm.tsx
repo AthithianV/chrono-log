@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import InputContainer from '../form/InputContainer';
 import useTag from '../../store/tagsStore';
-import { TagSchema } from '../../validation/schemas';
+import { TagSchema } from '../../utils/forms/schemas';
 import { addTagRepository, updateTagRepository } from '../../repository/tags.repository';
 import ColorPicker from '../form/ColorPicker';
 

@@ -2,7 +2,7 @@ import Database from "@tauri-apps/plugin-sql";
 import { error } from "@tauri-apps/plugin-log";
 import { z } from "zod";
 
-import { TagSchema } from "../validation/schemas";
+import { TagSchema } from "../utils/forms/schemas";
 
 export const getAllTagsRepository = async (sort:'ASC'|'DESC'='DESC')=>{
     try {
