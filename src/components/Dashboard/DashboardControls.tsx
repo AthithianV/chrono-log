@@ -1,5 +1,5 @@
-import { AddIcon, FilterIcon, StartIcon } from "../../assets/icons";
-import useWorkUnit from "../../store/workUnitStore";
+import { AddIcon, FilterIcon, StartIcon } from "@/components/ui/icons";
+import useWorkUnit from "@store/workUnitStore";
 
 const DashboardControls = () => {
 

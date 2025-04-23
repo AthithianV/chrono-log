@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useTask from "../../store/taskStore"
-import { DownArrowIcon, UpArrowIcon } from "../../assets/icons";
+import { DownArrowIcon, UpArrowIcon } from "../ui/icons";
 import { UseFormSetValue } from "react-hook-form";
 
 type PropType = {

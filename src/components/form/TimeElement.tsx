@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { UseFormSetValue } from "react-hook-form";
-import { secToHours, secToMinutes } from "../../utils/dateTime";
+import { secToHours, secToMinutes } from "@utils/dateTime";
 
 type PropType = {
     setValue: UseFormSetValue<{ 

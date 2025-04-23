@@ -1,5 +1,5 @@
 import usePomodaro from "../../store/pomodaroStore";
-import { StartIcon, StopIcon } from "../../assets/icons";
+import { StartIcon, StopIcon } from "../ui/icons";
 import ProgressBar from "./ProgressBar";
 
 

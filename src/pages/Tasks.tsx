@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AddIcon, SortIcon } from "../assets/icons"
+import { AddIcon, SortIcon } from "../components/ui/icons"
 import useTask from "../store/taskStore"
 import { error } from "@tauri-apps/plugin-log";
 import TaskForm from "../components/Task/TaskForm";

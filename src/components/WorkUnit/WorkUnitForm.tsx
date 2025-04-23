@@ -13,7 +13,7 @@ import TaskDropDown from "./TaskDropDown";
 import { getToday } from "../../utils/dateTime";
 import useTask from "../../store/taskStore";
 import SubmitButton from "../form/SubmitButton";
-import { CloseIcon, DeleteIcon, SaveIcon } from "../../assets/icons";
+import { CloseIcon, DeleteIcon, SaveIcon } from "../ui/icons";
 import Button from "../form/Button";
 import TagsDropDown from "./TagsDropDown";
 

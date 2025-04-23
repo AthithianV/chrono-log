@@ -1,4 +1,4 @@
-import { DarkThemeIcon, LightThemeIcon } from "../assets/icons";
+import { DarkThemeIcon, LightThemeIcon } from "../components/ui/icons";
 import useTheme from "../store/themeStore";
 
 const Settings = () => {

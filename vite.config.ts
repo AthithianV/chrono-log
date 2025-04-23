@@ -20,6 +20,10 @@ export default defineConfig(async () => ({
       '@utils': resolve(__dirname, './src/utils'),
       '@hooks': resolve(__dirname, './src/hooks'),
       '@styles': resolve(__dirname, './src/styles'),
+      '@store': resolve(__dirname, './src/store'),
+      '@types': resolve(__dirname, './src/types'),
+      '@constants': resolve(__dirname, './src/utils/constants'),
+      '@forms': resolve(__dirname, './src/utils/forms'),
     }
   },
 

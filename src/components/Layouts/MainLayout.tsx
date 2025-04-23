@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import SideNavbar from '../Navbar/SideNavbar';
-import OverlaySideNavbar from '../Navbar/OverlaySideNavbar';
-import TitleBar from '../titlebar/TitleBar';
+import SideNavbar from '@components/Navbar/SideNavbar';
+import OverlaySideNavbar from '@components/Navbar/OverlaySideNavbar';
+import TitleBar from '@components/titlebar/TitleBar';
 
 const MainLayout = () => {
 

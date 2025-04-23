@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useState } from 'react';
 
-import { CloseIcon } from '../../assets/icons'
+import { CloseIcon } from '../ui/icons'
 import useTask from '../../store/taskStore'
 import InputContainer from '../form/InputContainer';
 import { TaskSchema } from '../../utils/forms/schemas';

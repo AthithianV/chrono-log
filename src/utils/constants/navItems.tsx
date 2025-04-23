@@ -1,4 +1,4 @@
-import { AnalyticsIcon, DashBoardIcon, ExportIcon, PomodaroIcon, TagIcon, TaskIcon } from "../assets/icons";
+import { AnalyticsIcon, DashBoardIcon, ExportIcon, PomodaroIcon, TagIcon, TaskIcon } from "@components/ui/icons";
 
 export const navItems = [
     {

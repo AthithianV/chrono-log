@@ -1,5 +1,5 @@
 import { getCurrentWindow } from '@tauri-apps/api/window';
-import { CloseIcon, MaximizeIcon, MinimizeIcon } from '../../assets/icons';
+import { CloseIcon, MaximizeIcon, MinimizeIcon } from '../ui/icons';
 import Brand from './Brand';
 
 

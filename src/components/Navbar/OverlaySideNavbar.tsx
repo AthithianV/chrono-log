@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import TopNavbar from './TopNavbar'
-import SideNavbar from './SideNavbar'
-import OverlayLayout from '../Layouts/OverlayLayout';
+import TopNavbar from '@components/Navbar/TopNavbar'
+import SideNavbar from '@components/Navbar/SideNavbar'
+import OverlayLayout from '@components/Layouts/OverlayLayout';
 
 const OverlaySideNavbar = () => {
 

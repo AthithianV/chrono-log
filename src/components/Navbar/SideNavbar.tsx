@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 
-import { navItems } from "../../utils/navItems";
-import { SettingsIcon } from "../../assets/icons";
+import { navItems } from "@constants/navItems";
+import { SettingsIcon } from "@components/ui/icons";
 
 const SideNavbar = () => {
   

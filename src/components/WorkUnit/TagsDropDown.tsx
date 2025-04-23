@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { AddIcon, CloseIcon } from "../../assets/icons";
+import { AddIcon, CloseIcon } from "../ui/icons";
 import useTag from "../../store/tagsStore";
 import { Link } from "react-router-dom";
 import useWorkUnit from "../../store/workUnitStore";

@@ -1,4 +1,4 @@
-import { TickIcon } from "../../assets/icons"
+import { TickIcon } from "../ui/icons"
 
 type PropType = {
     color: string,

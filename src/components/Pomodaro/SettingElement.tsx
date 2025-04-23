@@ -1,4 +1,4 @@
-import { DownArrowIcon, UpArrowIcon } from "../../assets/icons"
+import { DownArrowIcon, UpArrowIcon } from "../ui/icons"
 import usePomodaro from "../../store/pomodaroStore"
 
 type PropsType = {

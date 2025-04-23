@@ -1,4 +1,4 @@
-import { CloseIcon } from '../../assets/icons'
+import { CloseIcon } from '../ui/icons'
 import { error } from '@tauri-apps/plugin-log';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';

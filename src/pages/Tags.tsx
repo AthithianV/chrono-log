@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AddIcon, SortIcon } from "../assets/icons"
+import { AddIcon, SortIcon } from "../components/ui/icons"
 import useTag from "../store/tagsStore";
 import TagForm from "../components/Tag/TagForm";
 import OverlayLayout from "../components/Layouts/OverlayLayout";
