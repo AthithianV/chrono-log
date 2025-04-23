@@ -1,6 +1,6 @@
 import { getCurrentWindow } from '@tauri-apps/api/window';
-import { CloseIcon, MaximizeIcon, MinimizeIcon } from '../ui/icons';
-import Brand from './Brand';
+import { CloseIcon, MaximizeIcon, MinimizeIcon } from '@components/ui/icons';
+import Brand from '@components/titlebar/Brand';
 
 
 const TitleBar = () => {

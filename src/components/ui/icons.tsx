@@ -1,4 +1,30 @@
-import { faBars, faCalendar, faChartPie, faCheck, faChevronDown, faChevronUp, faFileExport, faFilter, faGear, faHouse, faList, faMaximize, faMinimize, faMinus, faMoon, faPause, faPlay, faPlus, faSave, faSort, faStop, faStopwatch, faSun, faTag, faTrash, faWindowMaximize, faWindowMinimize, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { 
+    faBars, 
+    faCalendar, 
+    faChartPie, 
+    faCheck,
+    faChevronDown,
+    faChevronUp,
+    faFileExport,
+    faFilter,
+    faGear,
+    faHouse,
+    faList,
+    faMinus,
+    faMoon,
+    faPause,
+    faPlay,
+    faPlus,
+    faSave,
+    faSort,
+    faStop,
+    faStopwatch,
+    faSun,
+    faTag,
+    faTrash,
+    faWindowMaximize,
+    faXmark
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* General */

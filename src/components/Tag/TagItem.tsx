@@ -1,4 +1,4 @@
-import { TagIcon } from "../ui/icons"
+import { TagIcon } from "@components/ui/icons"
 
 const TagItem = ({name, color}:{name:string, color:string|null}) => {
   return (

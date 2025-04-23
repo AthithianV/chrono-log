@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { AddIcon, SortIcon } from "../components/ui/icons"
-import useTag from "../store/tagsStore";
-import TagForm from "../components/Tag/TagForm";
-import OverlayLayout from "../components/Layouts/OverlayLayout";
-import { getAllTagsRepository } from "../repository/tags.repository";
+import { AddIcon, SortIcon } from "@components/ui/icons"
+import useTag from "@store/tagsStore";
+import TagForm from "@components/Tag/TagForm";
+import OverlayLayout from "@components/Layouts/OverlayLayout";
 
 const Tags = () => {
 
@@ -15,9 +14,9 @@ const Tags = () => {
   }, [])
 
   useEffect(()=>{
-    getAllTagsRepository(sort)
-    .then(data=>setTags(data?data:[]))
-    .catch(err=>console.log(err))
+    // getAllTagsRepository(sort)
+    // .then(data=>setTags(data?data:[]))
+    // .catch(err=>console.log(err))
   }, [sort]);
 
   return (

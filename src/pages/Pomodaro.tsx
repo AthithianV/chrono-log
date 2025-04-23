@@ -1,6 +1,6 @@
-import Sessions from "../components/Pomodaro/SessionsBar";
-import PomodaroSettings from "../components/Pomodaro/Settings";
-import Timer from "../components/Pomodaro/Timer";
+import Sessions from "@components/Pomodaro/SessionsBar";
+import PomodaroSettings from "@components/Pomodaro/Settings";
+import Timer from "@components/Pomodaro/Timer";
 
 const Pomodaro = () => {  
 

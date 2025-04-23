@@ -13,6 +13,7 @@ const OverlaySideNavbar = () => {
         <TopNavbar setOverlay={()=>setViewSidebar(prev=>!prev)}/>
         {
           <OverlayLayout 
+            handleClose={()=>setViewSidebar(false)}
             view={viewSidebar} 
             openAnimation='slide-in' 
             closeAnimation='slide-out' 

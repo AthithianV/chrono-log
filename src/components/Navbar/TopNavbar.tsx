@@ -1,5 +1,5 @@
-import { DarkThemeIcon, LightThemeIcon, ToggleButtonIcon } from "../ui/icons"
-import useTheme from "../../store/themeStore"
+import { DarkThemeIcon, LightThemeIcon, ToggleButtonIcon } from "@components/ui/icons"
+import useTheme from "@store/themeStore"
 
 type PropType={
     setOverlay: React.Dispatch<React.SetStateAction<boolean>>

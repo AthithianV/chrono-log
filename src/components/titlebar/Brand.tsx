@@ -1,4 +1,4 @@
-import brandLogo from "../../assets/images/sand-clock.png";
+import brandLogo from "@assets/images/sand-clock.png";
 
 const Brand = () => {
   return (

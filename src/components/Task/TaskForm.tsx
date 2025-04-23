@@ -4,13 +4,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useState } from 'react';
 
-import { CloseIcon } from '../ui/icons'
-import useTask from '../../store/taskStore'
-import InputContainer from '../form/InputContainer';
-import { TaskSchema } from '../../utils/forms/schemas';
+import { CloseIcon } from '@components/ui/icons'
+import useTask from '@store/taskStore'
+import InputContainer from '@components/form/InputContainer';
+import { TaskSchema } from '@forms/schemas';
 import TaskOption from './TaskOption';
-import { addTaskRepository, updateTaskRepository } from '../../repository/task.repository';
-import ColorPicker from '../form/ColorPicker';
+// import { addTaskRepository, updateTaskRepository } from '@repository/task.repository';
+import ColorPicker from '@components/form/ColorPicker';
 
 const TaskForm = () => {
 
@@ -39,12 +39,12 @@ const TaskForm = () => {
     const onSubmit = async (data:z.infer<typeof TaskSchema>)=>{
         try {
             if(task){
-                updateTaskRepository({id: task.id, ...data});
-                updateTask({...data, id:task.id});
+                // updateTaskRepository({id: task.id, ...data});
+                // updateTask({...data, id:task.id});
             }else{
-                const id = await addTaskRepository(data);
-                if(id)
-                    addTask({...data, id});
+                // const id = await addTaskRepository(data);
+                // if(id)
+                //     addTask({...data, id});
             }
             toggleTaskFormView(false);          
         } catch (err) {

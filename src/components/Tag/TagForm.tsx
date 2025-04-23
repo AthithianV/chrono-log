@@ -1,13 +1,12 @@
-import { CloseIcon } from '../ui/icons'
+import { CloseIcon } from '@components/ui/icons'
 import { error } from '@tauri-apps/plugin-log';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import InputContainer from '../form/InputContainer';
-import useTag from '../../store/tagsStore';
-import { TagSchema } from '../../utils/forms/schemas';
-import { addTagRepository, updateTagRepository } from '../../repository/tags.repository';
-import ColorPicker from '../form/ColorPicker';
+import InputContainer from '@components/form/InputContainer';
+import useTag from '@store/tagsStore';
+import { TagSchema } from '@forms/schemas';
+import ColorPicker from '@components/form/ColorPicker';
 
 const TagForm = () => {
 
@@ -32,14 +31,14 @@ const TagForm = () => {
 
     const onSubmit = async (data:z.infer<typeof TagSchema>)=>{
         try {
-            if(tag){
-                updateTagRepository({id: tag.id, ...data});
-                updateTag({...data, id:tag.id});
-            }else{
-                const id = await addTagRepository(data);
-                if(id)
-                    addTag({...data, id});
-            }
+            // if(tag){
+            //     updateTagRepository({id: tag.id, ...data});
+            //     updateTag({...data, id:tag.id});
+            // }else{
+            //     const id = await addTagRepository(data);
+            //     if(id)
+            //         addTag({...data, id});
+            // }
             toggleTagFormView(false);          
         } catch (err) {
             error("Error Occured: "+ JSON.stringify(err));

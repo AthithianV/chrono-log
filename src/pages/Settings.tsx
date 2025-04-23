@@ -1,5 +1,5 @@
-import { DarkThemeIcon, LightThemeIcon } from "../components/ui/icons";
-import useTheme from "../store/themeStore";
+import { DarkThemeIcon, LightThemeIcon } from "@components/ui/icons";
+import useTheme from "@store/themeStore";
 
 const Settings = () => {
 

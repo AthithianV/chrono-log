@@ -5,16 +5,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { error } from "@tauri-apps/plugin-log";
 
-import { WorkUnitSchema } from "../../utils/forms/schemas";
-import InputContainer from "../form/InputContainer";
-import TimeElement from "../form/TimeElement";
-import useWorkUnit from "../../store/workUnitStore";
+import { WorkUnitSchema } from "@utils/forms/schemas";
+import InputContainer from "@components/form/InputContainer";
+import TimeElement from "@components/form/TimeElement";
+import useWorkUnit from "@store/workUnitStore";
 import TaskDropDown from "./TaskDropDown";
-import { getToday } from "../../utils/dateTime";
-import useTask from "../../store/taskStore";
-import SubmitButton from "../form/SubmitButton";
-import { CloseIcon, DeleteIcon, SaveIcon } from "../ui/icons";
-import Button from "../form/Button";
+import { getToday } from "@utils/dateTime";
+import useTask from "@store/taskStore";
+import SubmitButton from "@components/form/SubmitButton";
+import { CloseIcon, DeleteIcon, SaveIcon } from "@components/ui/icons";
+import Button from "@components/form/Button";
 import TagsDropDown from "./TagsDropDown";
 
 const WorkUnitForm = () => {

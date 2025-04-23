@@ -1,6 +1,6 @@
-import useWorkUnit from "../../store/workUnitStore"
-import { timeFormat } from "../../utils/dateTime"
-import TagItem from "../Tag/TagItem"
+import useWorkUnit from "@store/workUnitStore"
+import { timeFormat } from "@utils/dateTime"
+import TagItem from "@components/Tag/TagItem"
 
 const WorkUnitItem = ({workunit}:{workunit:WorkUnit}) => {
 

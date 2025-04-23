@@ -1,8 +1,8 @@
-import DashboardControls from "../components/Dashboard/DashboardControls"
-import WorkUnitForm from "../components/WorkUnit/WorkUnitForm"
-import WorkUnitItem from "../components/WorkUnit/WorkUnitItem";
-import OverlayLayout from "../components/Layouts/OverlayLayout";
-import useWorkUnit from "../store/workUnitStore"
+import DashboardControls from "@components/Dashboard/DashboardControls"
+import WorkUnitForm from "@components/WorkUnit/WorkUnitForm"
+import WorkUnitItem from "@components/WorkUnit/WorkUnitItem";
+import OverlayLayout from "@components/Layouts/OverlayLayout";
+import useWorkUnit from "@store/workUnitStore"
 
 const Dashboard = () => {
 

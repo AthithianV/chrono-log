@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { AddIcon, SortIcon } from "../components/ui/icons"
-import useTask from "../store/taskStore"
-import { error } from "@tauri-apps/plugin-log";
-import TaskForm from "../components/Task/TaskForm";
-import OverlayLayout from "../components/Layouts/OverlayLayout";
-import { getAllTasksRepository } from "../repository/task.repository";
+import { AddIcon, SortIcon } from "@components/ui/icons";
+import useTask from "@store/taskStore";
+import TaskForm from "@components/Task/TaskForm";
+import OverlayLayout from "@components/Layouts/OverlayLayout";
 
 const Tasks = () => {
 
@@ -12,9 +10,7 @@ const Tasks = () => {
   const [sort, setSort] = useState<'DESC'|'ASC'>("ASC");
 
   useEffect(()=>{
-    getAllTasksRepository(sort).then(
-      (data)=>setTasks(data?data:[])
-    ).catch(err=>error("Error Occurred While Fetching Task: "+JSON.stringify(err)));
+    
   }, [sort]);
 
   return (
